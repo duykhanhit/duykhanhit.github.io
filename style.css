@@ -102,6 +102,7 @@ body {
 .main {
   margin: 10px 10%;
   display: flex;
+  width: 80%;
 }
 .left {
   flex-basis: 65%;
@@ -178,5 +179,11 @@ body {
   }
   .social {
     display: none;
+  }
+  .main {
+    display: block;
+  }
+  .right {
+    margin: 10px auto;
   }
 }
