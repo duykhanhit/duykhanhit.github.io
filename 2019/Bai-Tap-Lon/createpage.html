@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="createpage.css">
+    <script src="./createpage.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="icon" href="https://image-1.gapo.vn/images/logo.png" type="image/gif" sizes="16x16">
+    <script src="https://kit.fontawesome.com/edd81d019b.js" crossorigin="anonymous"></script>
+    <title>GAPO</title>
+</head>
+
+<body>
+    <div id="navs" class="navbar fixed-top">
+        <div class="logo"><img class="lg" src="https://gapo.vn/assets/images/logo.svg" alt="logo"></div>
+        <div class="search">
+            <div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text radius-1 bg-search"><i class="fas fa-search"></i></div>
+                    </div>
+                    <input type="text" class="form-control radius-2 bg-search" placeholder="Tìm kiếm">
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="./home.html"><i class="icon fas fa-home"></i></a></li>
+                <li class="home"><a href="./page.html"><i class="icon fab fa-font-awesome-flag"></i></a></li>
+                <li><a href="/"><i class="icon fas fa-audio-description"></i></a></li>
+                <li><a href="./infor.html"><i class="icon far fa-user-circle"></i></a></li>
+                <li><a href="/"><i class="icon far fa-bell"></i></a></li>
+                <li><a href="/"><i class="icon fas fa-user-friends"></i></a></li>
+                <li><a href="./messenger.html"><i class="icon fab fa-facebook-messenger"></i></a></li>
+            </ul>
+        </div>
+        <div class="loguot">
+            <label for="check"><i class="icon fas fa-bars"></i></label>
+            <input type="checkbox" id="check" name="check">
+            <button class="choose">
+                <span><b>
+                        Đăng xuất
+                    </b></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="row create">
+        <div class="col-4 create hide">
+
+        </div>
+        <!-- Trang đầu tiên -->
+        <div id="create1" class="col-md-4 col-12 bg-white bg-img shadow-sm create">
+            <div class="cr-info">
+                <div class="cr">Tạo trang mới của bạn</div>
+                <div class="mt-2">Kết nối doanh nghiệp, bản thân hoặc mục đích xã hội của bạn với cộng đồng người dùng
+                    Gapo.</div>
+                <button type="button" class="btn btn-success mt-4 cr-btn" onclick="check();">Bắt đầu</button>
+            </div>
+        </div>
+        <!-- Trang thứ 2 -->
+        <div id="create2" class="col-md-4 col-12 bg-white shadow-sm cr-2">
+            <form name="createpage">
+                <b>Tên trang</b>
+                <input type="text" class="rd form-control mt-2" name="namepage" placeholder="Nhập tên trang">
+                <b>Hạng mục</b>
+                <select class="form-control">
+                    <option>Chọn hạng mục</option>
+                    <option>Âm nhạc</option>
+                    <option>Giải trí</option>
+                    <option>Người của công chúng</option>
+                    <option>Doanh nghiệp địa phương</option>
+                    <option>Người tạo video chơi game</option>
+                    <option>Nhà báo</option>
+                    <option>Nhà thơ</option>
+                    <option>Nhà tiên tri</option>
+                </select>
+                <b>Số điện thoại</b> <span class="text-muted">(không bắt buộc)</span>
+                <input type="text" class="rd form-control mt-2" name="phone" placeholder="Số điện thoại">
+                <b>Website</b> <span class="text-muted">(không bắt buộc)</span>
+                <input type="text" class="rd form-control mt-2" name="mail" placeholder="Website">
+                <b>Email</b> <span class="text-muted">(không bắt buộc)</span>
+                <input type="text" class="rd form-control mt-2" name="address" placeholder="Email">
+                <p class="text-muted mt-2" style="text-align: center;">Bước: 1/2</p>
+                <p style="text-align: center"><button type="button" class="btn btn-success mt-4 cr-btn"
+                        onclick="check1();">Tiếp theo</button></p>
+            </form>
+        </div>
+        <!-- Trang thứ 3 -->
+        <div id="create3" class="col-md-4 col-12 bg-white shadow-sm cr-2">
+            <img class="cover" src="./hit.jpg" alt="">
+            <img class="avatar-page" src="./avatar.png" alt="">
+            <button type="button" class="btn btn-primary cr-up vt-cover"><i class="fas fa-camera"></i>Tải ảnh
+                bìa</button>
+            <p style="text-align: center">
+                <button type="button" class="btn btn-primary mt-5 cr-up"><i class="fas fa-camera"></i>Tải ảnh đại
+                    diện</button>
+            </p>
+            <p class="text-muted mt-3" style="text-align: center;">Bước: 2/2</p>
+
+            <form action="./mypage.html">
+                <p style="text-align: center"><button type="submit" class="btn btn-success mt-3 cr-btn">Tiếp
+                        theo</button></p>
+            </form>
+        </div>
+
+
+        <div class="col-4 create hide">
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

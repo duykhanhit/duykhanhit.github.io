@@ -1,0 +1,390 @@
+* {
+    margin: 0 ;
+}
+body {
+    background-color: #f1f2f6 !important;
+}
+.navbar {
+    width: 100%;
+    height: 67px;
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #dfe4ea;
+    display: flex;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    padding-inline-start: 0px;
+}
+.navbar li {
+    height: 58px;
+    width: 80px;
+}
+.navbar li:hover {
+    border-bottom: 2px solid #84ec74;
+}
+.home {
+    border-bottom: 2px solid #44bd32;
+}
+.logo {
+    width: 150px;
+    height: 60px;
+    border-right: 0.5px solid #dfe4ea;
+}
+.lg {
+    transform: translate(25%, 50%);
+}
+.search {
+    width: 20%;
+    line-height: 60px;
+    height: 56px;
+    padding-left: 2%;
+}
+.menu {
+    width: 50%;
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+}
+.icon {
+    font-size: 32px;
+    color: #636e72;
+}
+.loguot {
+    width: 10%;
+    line-height: 60px;
+    height: 60px;
+    text-align: right;
+    padding-right: 50px;
+}
+.contain {
+    margin-top: 20px;
+}
+.choose{
+    display: none;
+    position: fixed;
+    top: 51px;
+    right: 40px;
+    background: #fff;
+    padding: 2px 0px !important;
+    margin: 0px 20px;
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid white;
+}
+.choose span{
+    padding: 10px 40px;
+}
+.choose:hover span{
+    background: rgb(34, 196, 34);
+    color: white;
+}
+#check:checked ~ .choose{
+    display: block;
+}
+#check{
+    display: none;
+}
+@media only screen and (max-width: 768px)
+{
+    .search, .menu, .loguot {
+        display: none;
+    }
+    .hide {
+        display: none;
+    }
+
+}
+.height {
+    height: 100%;
+    padding: 0px !important;
+    margin: 0 !important;
+    overflow-y: scroll;
+}
+.height-1 {
+    height: 100%;
+    padding: 0px !important;
+    margin: 0 !important;
+}
+.heigh {
+    border-radius: 5px;
+    margin-top: 30px !important;
+    padding: 0px !important;
+}
+.top {
+    margin-top: 67px !important;
+    z-index: 2 !important;
+}
+.post {
+    height: 80px;
+    margin-top: 80px;
+    display: flex;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 5px;
+}
+.input {
+    height: 40px;
+    width: 90%;
+    text-align: center;
+    color: #96cc8e;
+    border-radius: 5px;
+    border: 0;
+    background-color: #deecd4;
+}
+.input:hover {
+    background-color: #c3f0bc;
+}
+.avatar {
+    width: 15%;
+}
+.avt {
+    height: 50px;
+    width: 50px;
+    border-radius: 50% 50%;
+}
+.viet-bai {
+    width: 70%;
+}
+::-webkit-input-placeholder {
+    color: #44bd32;
+}
+.post-img {
+    width: 15%;
+}
+.img {
+    font-size: 28px;
+    color: #44bd32;
+}
+.img:hover {
+    height: 50px;
+    width: 50px;
+    border-radius: 50% 50%;
+    background-color: #ecf0f1;
+    line-height: 50px;  
+}
+.friend {
+    height: 250px;
+    margin-top: 30px;
+}
+.main-friend {
+    width: 100%;
+}
+.main-friend-info-1 {
+    width: 30%;
+    height: 200px;
+    float: left;
+    text-align: center;
+}
+.main-friend-info-2 {
+    width: 30%;
+    height: 200px;
+    margin-right: 5% !important;
+    margin-left: 5% !important;
+    float: left;
+    text-align: center;
+}
+.friend-avatar {
+    width: 100%;
+    height: 130px;
+    background-color: #636e72;
+}
+.add-friend {
+    background-color: #44bd32;
+    width: 90%;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    border-radius: 5px 5px;
+    margin: 0 auto;
+}
+.add-friend:hover {
+    background-color: #27ae60;
+}
+h4 {
+    padding: 20px 0px 20px 15px;
+}
+.side-menu-1 {
+    padding: 10px;
+}
+.side-menu-1 {
+    background-color: #ecf0f1;
+}
+.side-menu-1 a {
+    color: black;
+}
+.side-menu-1 a:hover {
+    text-decoration: none;
+}
+.side-menu-2 {
+    padding: 10px;
+}
+.side-menu-2 a {
+    color: black;
+}
+.side-menu-2 a:hover {
+    text-decoration: none;
+}
+.side-menu-2:hover {
+    background-color: #f1f2f6;
+}
+.pad {
+    padding-right: 15px;
+    font-size: 30px;
+    color: #44bd32;
+}
+.dieukhoan a:hover {
+    text-decoration: none;
+    color: black;
+}
+.dieukhoan a {
+    color: #636e72;
+}
+.dieukhoan {
+    padding: 10px;
+    padding-top: 120%;
+}
+.copyright {
+    padding: 10px;
+}
+/*
+    CSS phần bài viết.
+*/
+.post-item {
+    display: flex;
+    padding: 15px 15px 0 15px;
+}
+.post-avatar {
+    width: 50px;
+}
+.post-info {
+    width: 90%;
+    padding-left: 20px;
+}
+.post-option {
+    width: 5%;
+}
+.post-info p {
+    color: #636e72;
+}
+.post-content {
+    padding: 0px 15px;
+}
+.img-post {
+    width: 100%;
+}
+.post-status {
+    padding: 15px 15px 0 15px;
+    display: flex;
+}
+.post-react {
+    width: 70%;
+}
+.count {
+    width: 30%;
+}
+.post-function {
+    display: flex;
+    border-top: 1px solid #dfe6e9;
+    text-align: center;
+}
+.func-like {
+    width: 30%;
+    position: relative;
+    padding: 15px;
+    cursor: pointer;
+}
+.func-like:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.func-comment:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.func-share:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.list-react {
+    height: 40px;
+    width: 200px;
+    background-color: #44bd32;
+    border-radius: 15px 15px;
+    display: none;
+    line-height: 40px;
+    color: #ffffff;
+    font-size: 30px;
+}
+.func-like:hover .list-react{
+    display: block;
+    position: absolute;
+    margin-top: -80px;
+    margin-left: -15px;
+    z-index: 10000;
+}
+.hov:hover {
+    font-size: 40px;
+}
+.func-comment {
+    width: 40%;
+    padding: 15px;
+    cursor: pointer;
+}
+.func-share {
+    width: 30%;
+    padding: 15px;
+    cursor: pointer;
+}
+.post-function p {
+    color: black;
+    margin: 0px !important;
+}
+.heart {
+    color: red;
+}
+.radius-1 {
+    border-radius: 20px 0px 0px 20px !important;
+    background-color: white !important;
+    border: none !important;
+}
+.radius-2 {
+    border-radius: 0px 20px 20px 0px !important;
+    border: none !important;
+}
+.radius-2:focus {
+    background-color: #cccccc !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.bg-search1 {
+    background-color: #ced6e0 !important;
+}
+.hp-list-friend {
+    margin-top: 20px;
+    padding-bottom: 80px;
+}
+.hp-list-friend p {
+    margin: 0px !important;
+}
+.name {
+    color: #2d3436;
+    font-weight: 500;
+}
+#page2 {
+    display: none;
+}
+#page3 {
+    display: none;
+}
+.all {
+    float: right;
+    color: #44bd32;
+    cursor: pointer;
+}
+.all:hover {
+    color: #6e756d;
+}
+.hp-list-friend  p:hover {
+    background-color: #f4f7f8;
+}

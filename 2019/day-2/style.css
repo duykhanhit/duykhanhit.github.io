@@ -1,0 +1,107 @@
+p {
+  margin: 0 auto;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.title {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 60%;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title2 {
+  border-bottom: 1px solid black;
+  width: 60%;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.list {
+  border-bottom: 1px solid black;
+  width: 60%;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer {
+  border-top: 3px solid goldenrod;
+  padding: 15px;
+  background-image: linear-gradient(blue, violet);
+  margin-top: 10px;
+  text-align: center;
+  font-size: 36px;
+  color: antiquewhite;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+.brown {
+  color: brown;
+}
+
+.green {
+  color: green;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.olive {
+  color: olive;
+}
+
+.magenta {
+  color: magenta;
+}
+.menu {
+  background-color: #2e86de;
+  display: flex;
+  justify-content: space-evenly;
+  height: 40px;
+  line-height: 40px;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.center {
+  text-align: center;
+}
+.italic {
+  font-style: italic;
+}
+.bold {
+  font-weight: bold;
+}
+.avatar {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+.bg {
+  text-align: center;
+}
+span {
+  color: red;
+}
+hr {
+    width: 200px;
+}

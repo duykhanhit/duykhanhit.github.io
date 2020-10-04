@@ -1,0 +1,388 @@
+* {
+    margin: 0 ;
+}
+body {
+    background-color: #f1f2f6 !important;
+}
+.navbar {
+    width: 100%;
+    height: 67px;
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #dfe4ea;
+    display: flex;
+}
+ul {
+    list-style: none;
+    display: flex;
+    padding-inline-start: 0px;
+}
+li {
+    height: 58px;
+    width: 80px;
+}
+li:hover {
+    border-bottom: 2px solid #84ec74;
+}
+.home {
+    border-bottom: 2px solid #44bd32;
+}
+.logo {
+    width: 150px;
+    height: 60px;
+    border-right: 0.5px solid #dfe4ea;
+}
+.lg {
+    transform: translate(25%, 50%);
+}
+.search {
+    width: 20%;
+    line-height: 60px;
+    height: 56px;
+    padding-left: 2%;
+}
+.radius-1 {
+    border-radius: 20px 0px 0px 20px !important;
+    background-color: white !important;
+    border: none !important;
+}
+.radius-2 {
+    border-radius: 0px 20px 20px 0px !important;
+    border: none !important;
+}
+.radius-2:focus {
+    background-color: #cccccc !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.menu {
+    width: 50%;
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+}
+.icon {
+    font-size: 32px;
+    color: #636e72;
+}
+.loguot {
+    width: 15%;
+    line-height: 60px;
+    height: 60px;
+    text-align: right;
+    padding-right: 50px;
+}
+.contain {
+    margin-top: 20px;
+}
+.choose{
+    display: none;
+    position: fixed;
+    top: 51px;
+    right: 40px;
+    background: #fff;
+    padding: 2px 0px !important;
+    margin: 0px 20px;
+    z-index: 100;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid white;
+}
+.choose span{
+    padding: 10px 40px;
+}
+.choose:hover span{
+    background: rgb(34, 196, 34);
+    color: white;
+}
+#check:checked ~ .choose{
+    display: block;
+}
+#check{
+    display: none;
+}
+@media only screen and (max-width: 768px)
+{
+    .search, .menu, .loguot {
+        display: none;
+    }
+    .hide {
+        display: none;
+    }
+    .box1 {
+        left: 0% !important;
+    }
+
+}
+.height {
+    height: 100%;
+    padding: 0px !important;
+    margin: 0 !important;
+}
+.heigh {
+    height: 5000px;
+    margin-top: 30px !important;
+}
+.top {
+    margin-top: 67px !important;
+    z-index: 2 !important;
+}
+.post {
+    height: 80px;
+    margin-top: 80px;
+}
+.friend {
+    height: 200px;
+    margin-top: 30px;
+}
+ /*page*/
+ .post-item {
+    display: flex;
+    padding: 15px 15px 0 15px;
+}
+.post-avatar {
+
+}
+.avt{
+    border-radius: 90%;
+    width: 50px;
+    height: 50px;
+}
+.post-info {
+    width: 90%;
+    padding-left: 20px;
+}
+.post-option {
+    width: 5%;
+}
+.post-info p {
+    color: #636e72;
+}
+.post-content {
+    padding: 0px 15px;
+}
+.img-post {
+    width: 100%;
+    height: auto;
+}
+.post-status {
+    padding: 15px 15px 0 15px;
+    display: flex;
+}
+.post-react {
+    width: 70%;
+}
+.count {
+    width: 30%;
+}
+.post-function {
+    display: flex;
+    border-top: 1px solid #dfe6e9;
+    text-align: center;
+}
+.func-like {
+    width: 30%;
+    position: relative;
+    padding: 15px;
+    cursor: pointer;
+}
+.func-like:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.func-comment:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.func-share:hover {
+    background-color: #cccccc;
+    border-radius: 5px 5px;
+}
+.list-react {
+    height: 40px;
+    width: 200px;
+    background-color: #44bd32;
+    border-radius: 15px 15px;
+    display: none;
+    line-height: 40px;
+    color: #ffffff;
+    font-size: 30px;
+}
+.func-like:hover .list-react{
+    display: block;
+    position: absolute;
+    margin-top: -80px;
+    margin-left: -15px;
+    z-index: 10000;
+}
+.hov:hover {
+    font-size: 40px;
+}
+.func-comment {
+    width: 40%;
+    padding: 15px;
+    cursor: pointer;
+}
+.func-share {
+    width: 30%;
+    cursor: pointer;
+    padding: 15px;
+}
+.post-function p {
+    color: black;
+    margin: 0px !important;
+}
+.heart {
+    color: red;
+}
+.height1
+{
+    border-radius: 5px;
+    margin-top: 30px !important;
+    padding: 0px !important;
+    margin-bottom: 40px !important;
+}
+h3{
+    margin-left: 5%;
+    padding-top: 10%;
+}
+.left{
+    padding-top: 10%;
+    margin-left: 5%;
+}
+/*phan messs*/
+.borderright{
+    border-right: 0.5px solid #cccccc;
+
+}
+.borderbottom{
+    border-bottom: 0.5px solid #cccccc ;
+}
+.bordertop{
+    border-top:0.5px solid #cccccc ;
+}
+.box1{
+    margin-top: 20px !important;
+    top: 0;
+    padding-bottom: 27px;
+    padding-top: 20px;
+    left: 25%;
+    top: 47px !important;
+    position: fixed !important;
+}
+.box2{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 0px;
+    margin: 0 auto;
+}
+.box2 a {
+    color: yellow;
+}
+.x{
+    border: none;
+    width: 80%;
+    margin-right: 5%;
+}
+input:focus {
+    outline: 0;
+    box-shadow: none;
+    }
+.bb {
+    display: flex;
+}
+.gui {
+    float: right;
+    background-color: white;
+    border: none;
+}
+.text-content {
+    margin-top: 100px;
+}
+.send-text {
+    padding: 10px;
+    background-color: #74b9ff;
+    text-align: left;
+    margin-left: 60%;
+    border-radius: 10px 10px;
+}
+.recive-text {
+    padding: 10px;
+    background-color: #dcdde1;
+    width: 40%;
+    border-radius: 10px 10px;
+}
+h6 {
+    padding: 10px;
+    background-color: #74b9ff;
+    text-align: left;
+    margin-left: 60%;
+    border-radius: 10px 10px;
+    font-weight: normal !important;
+}
+.mess-name {
+    font-weight: 550;
+    font-size: 18px;
+    padding-left: 10px;
+}
+.info-mess {
+    text-align: center;
+}
+.info-mess-avt {
+    width: 80px;
+    height: 80px;
+    border-radius: 50% 50%;
+}
+.info-avt {
+    width: 50px;
+    height: 50px;
+    border-radius: 50% 50%;
+}
+.list-mess {
+    display: flex;
+    padding: 10px;
+    border-bottom: 0.5px solid #cccccc ;
+    cursor: pointer;
+}
+.time {
+    width: 20%;
+}
+.name-mess {
+    width: 60%;
+    font-weight: 600;
+    line-height: 2;
+    padding-left: 10px;
+}
+.hihi {
+    padding: 0 !important;
+}
+#nguoi2 {
+    display: none;
+}
+.list-active {
+    background-color: #a4d69d;
+}
+.dflex {
+    display: flex;
+    padding: 10px 0 10px 0 !important;
+}
+.online {
+    font-size:14px !important;
+    font-weight: normal;
+    color: #4e614b;
+}
+.fars {
+    font-size: 24px;
+    color: #817f7f;
+    padding-right: 10px;
+}
+.fars:hover {
+    color: #1b1b1b;
+}
+.scr {
+    overflow-y: scroll;
+}
+.hp-list-friend  p:hover {
+    background-color: #f4f7f8;
+}

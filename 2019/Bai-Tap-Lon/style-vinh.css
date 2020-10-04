@@ -1,0 +1,564 @@
+* {
+    margin: 0 ;
+}
+body {
+    background-color: #f1f2f6;
+}
+.navbar {
+    width: 100%;
+    height: 67px;
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #dfe4ea;
+    display: flex;
+    z-index: 1;
+}
+ul {
+    list-style: none;
+    display: flex;
+    padding-inline-start: 0px;
+}
+li {
+    height: 58px;
+    width: 80px;
+}
+ li:hover {
+    border-bottom: 2px solid #4cd137;
+}
+.home {
+    border-bottom: 2px solid #44bd32;
+}
+.logo {
+    width: 150px;
+    height: 60px;
+    border-right: 0.5px solid #dfe4ea;
+}
+.lg {
+    transform: translate(25%, 50%);
+}
+.search {
+    width: 20%;
+    line-height: 60px;
+    height: 56px;
+    padding-left: 2%;
+}
+.radius-1 {
+    border-radius: 20px 0px 0px 20px !important;
+    border: none !important;
+}
+.radius-2 {
+    border-radius: 0px 20px 20px 0px !important;
+    border: none !important;
+}
+.radius-2:focus {
+    background-color: #cccccc !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.bg-search {
+    background-color: #ced6e0 !important;
+}
+.bg-search1 {
+    background-color: #ffffff !important;
+}
+.menu {
+    width: 50%;
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+}
+.icon {
+    font-size: 32px;
+    color: #636e72;
+}
+.loguot {
+    width: 15%;
+    line-height: 60px;
+    height: 60px;
+    text-align: right;
+    padding-right: 50px;
+}
+.contain {
+    margin-top: 20px;
+}
+.choose{
+    display: none;
+    position: fixed;
+    top: 51px;
+    right: 40px;
+    background: #fff;
+    padding: 2px 0px !important;
+    margin: 0px 20px;
+    z-index: 2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: 1px solid white;
+}
+.choose span{
+    padding: 10px 40px;
+}
+.choose:hover span{
+    background: rgb(34, 196, 34);
+    color: white;
+}
+#check:checked ~ .choose{
+    display: block;
+}
+#check{
+    display: none;
+}
+/* -------------------------Thông tin cá nhân----------------------- */
+.main{
+    height: auto;
+    margin-top: 90px;
+    width: 60%;
+    margin-left: 20%;
+}
+.mainpage{
+    height: auto;
+    margin-top: 0;
+    width: 100%;
+    margin-left: 0;
+}
+.content{
+    border-radius: 5px;
+    height: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(209, 193, 193, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.top{
+    height: 16.25rem;
+    background-color: #f2f2f2;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+.top img{
+    border-radius: 5px;
+}
+.avatar1 img{
+    height: 10.25rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 200px;
+    margin: auto;
+    background: #fff;
+    border: 7px solid white;
+    border-radius: 50%;
+}
+.avatar1page img{
+    height: 10.25rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 110px;
+    margin: auto;
+    background: #fff;
+    border: 7px solid white;
+    border-radius: 50%;
+}
+.menu1{
+    border-top:1px solid rgb(32, 32, 32) ;;
+}
+.menu1 li{
+    list-style: none;
+    width: 120px;
+    padding: 10px 0;
+    text-align: center;
+    line-height: 30px;
+}
+.menu1 button{
+    height: auto;
+    border: 1px solid white;
+    background: white;
+    padding: 0;
+}
+li:hover a{
+    text-decoration: none;
+}
+ a{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.fix{
+    position: absolute;
+    right: 22%;
+    top: 42%;
+    color: black;
+}
+.fix:hover button{
+    opacity: 0.8;
+}
+.fixpage {
+    position: absolute;
+    right: 10px;
+    top: 9%;
+    color: black;
+}
+.fixpage:hover button{
+    opacity: 0.8;
+}
+.name:hover a{
+    text-decoration: none;
+}
+.update{
+    right: 24%;
+    top: 420px;
+    position: absolute;
+    z-index: 1;
+}
+.updatepage{
+    right: 5%;
+    top: 333px;
+    position: absolute;
+    z-index: 1;
+}
+.up1{
+    font-weight: bold;
+    background: gray;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+#up{
+    display: none;
+}
+.cnt{
+    width: 150px;
+    background: white;
+    border: 1px solid white;
+    display: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.cnt1{
+    margin-bottom: 10px;
+    padding: 12px;
+}
+.cnt2{
+    margin-bottom: 10px;
+    padding: 6px;
+}
+#up:checked~ .cnt{
+    display: block;
+}
+.avt1{
+    position: absolute;
+    right: 21%;
+    top: 420px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    background: grey;
+}
+.avt1:hover i{
+    cursor: pointer;
+}
+.avt1page:hover i{
+    cursor: pointer;
+}
+.avt1page{
+    position: absolute;
+    right: 0%;
+    top: 333px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    background: grey;
+}
+/* -------------------js------------------------------------------- */
+#infor{
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius:5px ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.informain{
+    padding: 24px 48px;
+}
+.infor1{
+    font-size: 18px;
+    padding: 16px 0;
+}
+#friend{
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 100%;
+    border-radius:5px ;
+    box-shadow: 0 4px 8px 0 rgba(209, 193, 193, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+#image{
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: auto;
+    border-radius:5px ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+/* -----------------------Content------------------------------------- */
+#content1
+{
+    display: flex;
+    height: auto;
+
+}
+.contentleft{
+    width: 40%;
+    margin-right: 10px;
+    height: auto;
+}
+.contentright{
+    width: 60%;
+    margin-left: 10px;
+    height: auto;
+}
+.contentlefttop{
+    width: 100%;
+    padding: 28px;
+    margin-bottom: 10px;
+    border-radius:5px ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contentleftbot{
+    width: 100%;
+    padding: 28px;
+    margin-bottom: 10px;
+    border-radius:5px ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contentrightbot{
+    border-radius: 5px;
+    width: 100%;
+    height:auto;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/* ---------------------đăng bài---------------------------------------- */
+.post {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 80px;
+    display: flex;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.input {
+    height: 40px;
+    width: 96%;
+    text-align: center;
+    color: #44bd32;
+    border-radius: 5px;
+    border: 0;
+    background-color: #b8e994;
+}
+.avatar{
+    width: 15%;
+}
+.avt {
+    height: 50px;
+    width: 50px;
+    border-radius: 50% 50%;
+}
+.viet-bai {
+    width: 70%;
+}
+::-webkit-input-placeholder {
+    color: #44bd32;
+}
+.post-img {
+    width: 15%;
+}
+.img {
+    font-size: 28px;
+    color: #44bd32;
+}
+.img:hover {
+    height: 50px;
+    width: 50px;
+    border-radius: 50% 50%;
+    background-color: #ecf0f1;
+    line-height: 50px;
+}
+.post-item {
+    display: flex;
+    padding: 15px 15px 0 15px;
+}
+.post-avatar {
+    width: 50px;
+}
+.post-info {
+    width: 90%;
+    padding-left: 20px;
+}
+.post-option {
+    width: 5%;
+}
+.post-info p {
+    color: #636e72;
+}
+.post-content {
+    padding: 0px 15px;
+}
+.img-post {
+    width: 100%;
+    height: 300px;
+}
+.post-status {
+    padding: 15px 15px 0 15px;
+    display: flex;
+}
+.post-react {
+    width: 70%;
+}
+.count {
+    width: 30%;
+}
+.post-function {
+    display: flex;
+    border-top: 1px solid #dfe6e9;
+    text-align: center;
+}
+.func-like {
+    width: 30%;
+    position: relative;
+    padding: 15px;
+}
+.list-react {
+    height: 40px;
+    width: 200px;
+    background-color: #44bd32;
+    border-radius: 15px 15px;
+    display: none;
+    line-height: 40px;
+    color: #ffffff;
+    font-size: 30px;
+}
+.func-like:hover .list-react{
+    display: block;
+    position: absolute;
+    margin-top: -80px;
+    margin-left: -15px;
+    z-index: 10000;
+}
+.hov:hover {
+    font-size: 40px;
+}
+.func-comment {
+    width: 40%;
+    padding: 15px;
+}
+.func-share {
+    width: 30%;
+    padding: 15px;
+}
+.post-function p {
+    color: black;
+    margin: 0px !important;
+}
+.heart {
+    color: red;
+}
+/* ---------------------hết phần đăng bài--------------------------------- */
+@media only screen and (max-width:600px)
+{
+    .search, .menu, .loguot, .menu1, .contentleftbot {
+        display: none;
+    }
+    .hide {
+        display: none;
+    }
+    .main{
+        width: 98%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .content{
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+    #content1{
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+    }
+    .contentleft{
+        width: 100%;
+    }
+    .contentright{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .fix{
+        right: 3%;
+        top: 90px;
+    }
+    .fixpage{
+        right: 3%;
+        top: 90px;
+    }
+    .update{
+        display: none;
+    }
+    .updatepage{
+        display: none;
+    }
+    .avt1{
+        display: none;
+    }
+    .all{
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 600px) and (max-width: 1032px) {
+    .search, .menu, .loguot, .menu1, .contentleftbot {
+        display: none;
+    }
+    .hide {
+        display: none;
+    }
+    .content{
+        width: 100%;
+        height: auto;
+    }
+    .main{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .fix{
+        right: 10%;
+        top:90px;
+    }
+    .fixpage{
+        right: 10%;
+        top: 90px;
+    }
+    .update{
+        display: none;
+    }
+    .updatepage{
+        display: none;
+    }
+    .avt1page{
+        display: none;
+    }
+    .avt1{
+        display: none;
+    }
+    .all{
+        width: 100%;
+    }
+}
+.height {
+    height: auto;
+    padding: 0px !important;
+    margin: 0 !important;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JavaScript day 3</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main">
+            <pre id="info"></pre>
+            <input type="button" class="btn create" value="Create" id="onCreate" />
+        </div>
+
+
+        <div class="layer" id="display">
+            <div class="card">
+                <form>
+                    <div class="left">
+                        <input type="text" value="task 1" id="title" /> <br><br>
+                        <label for="">Type</label>
+                        <select id="type">
+                            <option value="Task">Task</option>
+                            <option value="Feature">Feature</option>
+                            <option value="Issue">Issue</option>
+                            <option value="Bug">Bug</option>
+                        </select>
+                        <label for="">State</label>
+                        <select id="state">
+                            <option value="Todo">Todo</option>
+                            <option value="In processing">In processing</option>
+                            <option value="Inreview">Inreview</option>
+                            <option value="Done">Done</option>
+                        </select> <br><br>
+                        <label for="priority">Priority:</label>
+                        <input type="radio" name="priority" value="Highest" /> Highest
+                        <input type="radio" name="priority" value="High" checked="checked" /> High
+                        <input type="radio" name="priority" value="Medium" /> Medium
+                        <input type="radio" name="priority" value="Low" /> Low
+                        <br><br>
+                        <label for="issue">Issue allow for:</label> <br>
+                        <input type="checkbox" name="issue" checked="checked" value="Back-end" /> Back-end <br>
+                        <input type="checkbox" name="issue" checked="checked" value="Front-end" /> Front-end <br>
+                        <input type="checkbox" name="issue" checked="checked" value="Function tester" /> Function tester
+                        <br>
+                        <input type="checkbox" name="issue" checked="checked" value="Performance tester" /> Performance
+                        tester <br><br><br>
+                        <label for="description">Description:</label> <br>
+                        <textarea name="description" id="description" cols="30" rows="5">task 1</textarea>
+                    </div>
+                    <div class="right">
+                        <label for="createdBy"><b>Created by:</b></label> <br>
+                        <input type="text" value="Joo" id="createdBy" /> <br>
+                        <label for="assignee"><b>Assignee:</b></label> <br>
+                        <input type="text" value="joo" id="assignee" /> <br>
+                        <label for="estimate"><b>Estimate:</b></label> <br>
+                        <input type="text" value="20/03/2020" id="estimate" />
+                        <div class="button">
+                            <input class="btn save" type="button" name="save" id="save" value="Save" />
+                            <input class="btn close" type="button" name="close" id="close" value="Close" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

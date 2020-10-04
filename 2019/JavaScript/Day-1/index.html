@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="bai1">
+        <h1>Bài 1</h1>
+        <h2>Giải phương trình bậc 2</h2>
+        <form>
+            <input type="text" value="" id="a" placeholder="a" />
+            x <sup>2</sup> +
+            <input type="text" value="" id="b" placeholder="b" />
+            x +
+            <input type="text" value="" id="c" placeholder="c" />
+            = 0 <br><br>
+            <input type="reset" />
+            <input type="button" value="Kết quả" onclick="giaiPT();" />
+        </form>
+        <br>
+         <b>Kết quả:</b><div id="kq1"></div>
+    </div>
+
+    <div class="bai2">
+        <h1>Bài 2</h1>
+        <h2>Tìm số ngày trong năm</h2>
+        <form>
+            <input type="text" value="" id="month" placeholder="Nhập tháng" />
+            <input type="text" value="" id="year" placeholder="Nhâp năm" />
+            <input type="reset" />
+            <input type="button" value="Kết quả" onclick="timNgay();" />
+        </form>
+        <b>Kết quả:</b><div id="kq2"></div>
+
+    </div>
+
+    <div class="bai3">
+        <h1>Bài 3</h1>
+        <h2>In số nguyên tố</h2>
+        <form>
+            <input type="text" value="" id="number" placeholder="Nhập n" />
+            <input type="reset" />
+            <input type="button" value="Kết quả" onclick="display();" />
+        </form>
+        <b>Kết quả:</b><div id="kq3"></div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styletrangcanhan.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+    <link rel="icon" href="https://image-1.gapo.vn/images/logo.png" type="image/gif" sizes="16x16">
+    <script src="https://kit.fontawesome.com/edd81d019b.js" crossorigin="anonymous"></script>
+    <title>GAPO</title>
+</head>
+
+<body>
+    <div class="navbar fixed-top">
+        <div class="logo"><a href="/"><img class="lg" src="https://gapo.vn/assets/images/logo.svg" alt="logo"></a></div>
+        <div class="search">
+            <div class="col-auto">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text radius-1 bg-search"><i class="fas fa-search"></i></div>
+                    </div>
+                    <input type="text" class="form-control radius-2 bg-search" placeholder="Tìm kiếm">
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="./home.html"><i class="icon fas fa-home"></i></a></li>
+                <li><a href=""><i class="icon fab fa-font-awesome-flag"></i></a></li>
+                <li><a href=""><i class="icon fas fa-audio-description"></i></a></li>
+                <li class="home"><a href="./trangcanhan.html"><i class="icon far fa-user-circle"></i></a></li class="home">
+                <li><a href="./thongbao.html"><i class="icon far fa-bell"></i></a></li>
+                <li><a href=""><i class="icon fas fa-user-friends"></i></a></li>
+                <li><a href="/"><i class="icon fab fa-facebook-messenger"></i></a></li>
+            </ul>
+        </div>
+        <div class="loguot">
+            <label for="check"><i class="icon fas fa-bars"></i></label>
+            <input type="checkbox" id="check" name="check">
+            <button class="choose">
+                <span><b>
+                        Đăng xuất
+                    </b></span>
+            </button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="content">
+            <div class="top">
+                <img src="https://i.imgur.com/l33D9kT.jpg" alt="ảnh" style="width: 100%; height: 100%;">
+                <div class="fix">
+                    <button
+                        style="padding: 5px; color: black; font-weight: bold; background: grey; border-radius: 5px; border: 1px solid white; opacity: 0.6;"><i
+                            class="fas fa-camera">Cập nhật ảnh bìa</i></button>
+                </div>
+            </div>
+            <div class="avatar1">
+                <img src="https://i.imgur.com/IaEbkFz.jpg" alt="">
+            </div>
+            <div class="name">
+                <a href="./infor.html" style="color: black;">
+                    <h3 style="text-align: center; margin: 15px 5px;">Hit Club</h3>
+                </a>
+
+            </div>
+            <div class="menu1">
+                <ul>
+                    <li><button><a href="./infor.html" style="color: green;font-weight: bold;">Dòng thời
+                                gian</a></button></li>
+                    <li><button onclick="check()"><a href="#" style="color: green; font-weight: bold;">Giới
+                                thiệu</a></button></li>
+                    <li><button onclick="check1()"><a href="#" style="color: green; font-weight: bold;">Bạn
+                                bè</a></button></li>
+                    <li><button onclick="check2()"><a href="#" style="color: green; font-weight: bold;">Ảnh</a></button>
+                    </li>
+                </ul>
+            </div>
+            <div class="update">
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary up1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" style="border-radius: 5px;">
+                            <i class="fas fa-camera"> Thay đổi phông nền</i>
+                        </button>
+                        <div class="dropdown-menu ml-5" aria-labelledby="btnGroupDrop1"
+                            style=" background: white;">
+                            <a class="dropdown-item" href="#"><i class="fas fa-download"><b>Tải phông nền</b></i></a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"><b> Xóa phông nền</b></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="avt1">
+
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" style="border-radius: 20px; margin: 0 -10px;background-color: lightgray; border: none;">
+                            <i style="color: black;" class="fas fa-cog"></i>
+                        </button>
+                        <div class="dropdown-menu mr-5" aria-labelledby="btnGroupDrop1"
+                            style=" background:white;">
+                            <a class="dropdown-item" href="#"><i class="fas fa-edit"><b> Chỉnh sửa thông tin</b></i></a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-lock"><b> Thay đổi mật khẩu</b></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="infor">
+            <div class="informain">
+                <h2 style="margin-bottom: 10px;text-align: left;">Giới thiệu</h2>
+                <div class="infor1">
+                    <i class="far fa-user"> <b>Thông tin cá nhân</b></i>
+                </div>
+                <div class="container" style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            Tên tài khoản
+                        </div>
+                        <div class="col-sm" style="text-align: left;">
+                            Hit Club
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            Giới tính
+                        </div>
+                        <div class="col-sm" style="text-align:left">
+                            chưa cập nhật
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container"
+                    style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;border-bottom: 1px solid rgb(190, 186, 186)">
+                    <div class="row">
+                        <div class="col-sm">
+                            Ngày sinh
+                        </div>
+                        <div class="col-sm" style="text-align:left">
+                            18/08/2010
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="infor1">
+                    <i class="fas fa-phone-alt"> Thông tin liên hệ</i>
+                </div>
+                <div class="container" style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            Số điện thoại
+                        </div>
+                        <div class="col-sm" style="text-align: left;">
+                            0123456789
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            Tỉnh/Thành phố hiện tại
+                        </div>
+                        <div class="col-sm">
+                            Haui
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container"
+                    style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;border-bottom: 1px solid rgb(190, 186, 186)">
+                    <div class="row">
+                        <div class="col-sm">
+                            Quê quán
+                        </div>
+                        <div class="col-sm">
+                            chưa cập nhật
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="infor1">
+                    <i class="fas fa-heart"> <b>Mối quan hệ</b></i>
+                </div>
+                <div class="container"
+                    style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;border-bottom: 1px solid rgb(190, 186, 186)">
+                    <div class="row">
+                        <div class="col-sm">
+                            Tình trạng
+                        </div>
+                        <div class="col-sm">
+                            chưa cập nhật
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="infor1">
+                    <i class="fas fa-briefcase"> <b>Công việc và học vấn</b></i>
+                </div>
+                <div class="container"
+                    style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;border-bottom: 1px solid rgb(190, 186, 186)">
+                    <div class="row">
+                        <div class="col-sm">
+                            Trường học
+                        </div>
+                        <div class="col-sm">
+                            chưa cập nhật
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="container" style="border-top: 1px solid rgb(190, 186, 186); padding: 16px 0;">
+                    <div class="row">
+                        <div class="col-sm">
+                            Công ty
+                        </div>
+                        <div class="col-sm">
+                            chưa cập nhật
+                        </div>
+                        <div class="col-sm stylea" style="text-align: right;">
+                            <a href="#"><i class="fas fa-pencil-alt">Chỉnh sửa</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="friend">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2><b>Bạn bè</b></h2><span style="opacity: 0.8;">8 bạn</span>
+                    </div>
+                    <div class="col-sm-4">
+                        <h5 style="line-height: 60px;">Lời mời kết bạn <span
+                                style="background: red;color: white; border: 1px solid red; border-radius: 50%;padding: 2.8px 10.4px;"><b>9</b></span>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/KJCf44l.jpg" style="width: 100%; height: 70%;" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;  text-align: center;">
+                            <span>
+                                <b> Hải Yến </b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/vZIN7Rc.jpg" style="width: 100%;  height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Hoang Ngoc </b>(Quăt)
+                            </span> <br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/Wbz84T6.jpg" style="width: 100%;  height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b>Nguyễn Công Thắng</b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/Uwi5knq.jpg" style="width: 100%; height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Nguyễn Lương </b>
+                            </span> <br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/VKwUMTU.jpg" style="width: 100%; height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Phan Tuấn Minh </b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/FratbpC.jpg" style="width: 100%; height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Thunder Sword </b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/fQH0mcb.jpg" style="width: 100%; height: 70%;" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Sơn Trần </b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                    <div class="col hover">
+                        <img src="https://i.imgur.com/6kVFmkr.jpg" style="width: 100%; height: 70%" alt="">
+                        <div
+                            style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px; text-align: center;">
+                            <span>
+                                <b> Nhung Gabby </b>
+                            </span><br>
+                            <button
+                                style=" margin-bottom: 10px; margin-top: 15px; background: rgb(164, 165, 163); border: 1px solid rgb(164, 165, 163); border-radius: 5px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); font-weight: bold;opacity: 0.7; padding: 0 40px;"><i
+                                    class="fas fa-check"> Bạn bè</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="image">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2><b>Ảnh</b></h2><span style="opacity: 0.8;">16 ảnh</span>
+                    </div>
+                    <div class="col-sm-4">
+
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="margin-top: 10px;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/RDTHaKy.jpg">
+                            <img src="https://i.imgur.com/RDTHaKy.jpg" style="width: 100%;height: 100%;" alt=""
+                                class="img-thumbnail">
+                        </a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/eUgMV7K.jpg"><img src="https://i.imgur.com/eUgMV7K.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/5ooc1q5.jpg"><img src="https://i.imgur.com/5ooc1q5.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/AldFrwX.jpg"><img src="https://i.imgur.com/AldFrwX.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="margin-top: 10px;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/a5nBtrw.jpg"><img src="https://i.imgur.com/a5nBtrw.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/mfAVJb3.jpg"><img src="https://i.imgur.com/mfAVJb3.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/KVnPrvo.jpg"> <img src="https://i.imgur.com/KVnPrvo.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail">
+                        </a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/oZOW7Iy.jpg"> <img src="https://i.imgur.com/oZOW7Iy.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="margin-top: 10px;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/yDScvIH.jpg">
+                            <img src="https://i.imgur.com/yDScvIH.jpg" style="width: 100%;height: 100%;" alt=""
+                                class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/1vxlQ3V.jpg"> <img src="https://i.imgur.com/1vxlQ3V.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/DFTJD2h.jpg">
+                            <img src="https://i.imgur.com/DFTJD2h.jpg" style="width: 100%;height: 100%;" alt=""
+                                class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/KJCf44l.jpg"> <img src="https://i.imgur.com/KJCf44l.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="margin-top: 10px;">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/vZIN7Rc.jpg"><img src="https://i.imgur.com/vZIN7Rc.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/GaYmSpo.jpg">
+                            <img src="https://i.imgur.com/GaYmSpo.jpg" style="width: 100%;height: 100%;" alt=""
+                                class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/x6IkTrs.jpg"> <img src="https://i.imgur.com/x6IkTrs.jpg"
+                                style="width: 100%;height: 100%;" alt="" class="img-thumbnail"></a>
+                    </div>
+                    <div class="col hover">
+                        <a href="https://i.imgur.com/TPCJltt.jpg">
+                            <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 100%;height: 100%;" alt=""
+                                class="img-thumbnail"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function check() {
+                document.getElementById("infor").style.display = "block";
+                document.getElementById("content1").style.display = "none"
+                document.getElementById("friend").style.display = "none"
+                document.getElementById("image").style.display = "none"
+            }
+            function check1() {
+                document.getElementById("infor").style.display = "none";
+                document.getElementById("content1").style.display = "none"
+                document.getElementById("friend").style.display = "block"
+                document.getElementById("image").style.display = "none"
+            }
+            function check2() {
+                document.getElementById("infor").style.display = "none";
+                document.getElementById("content1").style.display = "none"
+                document.getElementById("friend").style.display = "none"
+                document.getElementById("image").style.display = "block"
+            }
+        </script>
+        <div id="content1">
+            <div class="contentleft">
+                <div class="contentlefttop">
+                    <div style="display: flex;">
+                        <div style="font-weight: bold; width: 65%; height: auto;">Ảnh <br>
+                        </div>
+                        <div>
+                            <button onclick="check2()"
+                                style="cursor: pointer; background: white; border: 1px solid white; color: green; font-weight: bold;">Xem
+                                tất cả</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; width: 100%;height: auto;">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                    </div>
+                </div>
+                <div class="contentleftbot">
+                    <div style="display: flex;">
+                        <div style="font-weight: bold; width: 60%; height: auto;">Bạn bè<br>
+                        </div>
+                        <div>
+                            <button onclick="check1()"
+                                style="cursor: pointer; background: white; border: 1px solid white; color: green; font-weight: bold;">Tất
+                                cả bạn bè</button>
+                        </div>
+                    </div>
+                    <div style="display: flex; width: 100%;height: auto;">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                        <img src="https://i.imgur.com/TPCJltt.jpg" style="width: 30%; height: auto; padding: 5px;"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="contentright">
+                <div class="post bg-white">
+                    <div class="avatar">
+                        <img src="https://i.imgur.com/IaEbkFz.jpg" class="avt" alt="">
+                    </div>
+                    <form class="viet-bai" name="post">
+                        <input class="input" type="text" placeholder="Đăng bài viết" required="">
+                    </form>
+                    <div class="post-img">
+                        <i class="img far fa-images"></i>
+                    </div>
+                </div>
+
+                <div class="contentrightbot">
+                    <div class="post-item">
+                        <div class="post-avatar">
+                            <img src="https://i.imgur.com/IaEbkFz.jpg" class="avt" alt="">
+                        </div>
+                        <div class="post-info">
+                            <b>HIT Club</b>
+                            <p>Vừa xong . <i class="fas fa-globe-asia"></i></p>
+                        </div>
+                        <div class="post-option">
+                            <p><i class="fas fa-ellipsis-h"></i></p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>
+                            HIT đã có mặt tại Thiên Phú Lâm 🤟🤟🤟
+                        </p>
+                    </div>
+                    <div class="post-imgages">
+                        <img class="img-post" src="https://i.imgur.com/n0cjM7i.jpg" alt="">
+                    </div>
+                    <div class="post-status">
+                        <div class="post-react">
+                            <p><i class="heart far fa-heart"></i> Bạn và 10k người khác</p>
+                        </div>
+                        <div class="count">999 bình luận</div>
+                    </div>
+                    <div class="post-function">
+                        <div class="func-like">
+                            <p><i class="far fa-thumbs-up"></i> Thích</p>
+                            <div class="list-react">
+                                <i class="hov far fa-thumbs-up"></i>
+                                <i class="hov far fa-heart"></i>
+                                <i class="hov far fa-angry"></i>
+                                <i class="hov far fa-smile"></i>
+                                <i class="hov far fa-sad-cry"></i>
+                            </div>
+                        </div>
+                        <div class="func-comment">
+                            <p><i class="far fa-comment-alt"></i> Bình luận</p>
+                        </div>
+                        <div class="func-share">
+                            <p><i class="fas fa-share"></i> Chia sẻ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentrightbot">
+                    <div class="post-item">
+                        <div class="post-avatar">
+                            <img src="https://i.imgur.com/IaEbkFz.jpg" class="avt" alt="">
+                        </div>
+                        <div class="post-info">
+                            <b>HIT Club</b>
+                            <p>69 phút trước . <i class="fas fa-globe-asia"></i></p>
+                        </div>
+                        <div class="post-option">
+                            <p><i class="fas fa-ellipsis-h"></i></p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>
+                            😎 Mọi người ơiiiiii!
+                            🤟🤟 2 3 dô, 2 3 dô, 2 3 HIT!
+                            Hãy cmt cảm xúc, cảm nhận của bạn về đợt du hí này ngay dưới đây nào 😍😍
+                            Yêu HIT
+                        </p>
+                    </div>
+                    <div class="post-imgages">
+                        <img class="img-post" src="https://i.imgur.com/jrQ36eW.jpg" alt="">
+                    </div>
+                    <div class="post-status">
+                        <div class="post-react">
+                            <p><i class="heart far fa-heart"></i> Bạn và 10k người khác</p>
+                        </div>
+                        <div class="count">999 bình luận</div>
+                    </div>
+                    <div class="post-function">
+                        <div class="func-like">
+                            <p><i class="far fa-thumbs-up"></i> Thích</p>
+                            <div class="list-react">
+                                <i class="hov far fa-thumbs-up"></i>
+                                <i class="hov far fa-heart"></i>
+                                <i class="hov far fa-angry"></i>
+                                <i class="hov far fa-smile"></i>
+                                <i class="hov far fa-sad-cry"></i>
+                            </div>
+                        </div>
+                        <div class="func-comment">
+                            <p><i class="far fa-comment-alt"></i> Bình luận</p>
+                        </div>
+                        <div class="func-share">
+                            <p><i class="fas fa-share"></i> Chia sẻ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contentrightbot">
+                    <div class="post-item">
+                        <div class="post-avatar">
+                            <img src="https://i.imgur.com/IaEbkFz.jpg" class="avt" alt="">
+                        </div>
+                        <div class="post-info">
+                            <b>HIT Club</b>
+                            <p>96 phút trước . <i class="fas fa-globe-asia"></i></p>
+                        </div>
+                        <div class="post-option">
+                            <p><i class="fas fa-ellipsis-h"></i></p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>
+                            "Em ơi lên xe mình đi thôi,đời mình khi trễ lúc vội
+                            Bao lâu rồi ta không nghỉ ngơi để thân thể réo hụt hơi
+                            Tuổi trẻ có được bao nhiêu nào, chớp mắt đã 30 rồi..." 🎼🎼
+                        </p>
+                    </div>
+                    <div class="post-imgages">
+                        <img class="img-post" src="https://i.imgur.com/CMjf7C6.jpg" alt="">
+                    </div>
+                    <div class="post-status">
+                        <div class="post-react">
+                            <p><i class="heart far fa-heart"></i> Bạn và 10k người khác</p>
+                        </div>
+                        <div class="count">999 bình luận</div>
+                    </div>
+                    <div class="post-function">
+                        <div class="func-like">
+                            <p><i class="far fa-thumbs-up"></i> Thích</p>
+                            <div class="list-react">
+                                <i class="hov far fa-thumbs-up"></i>
+                                <i class="hov far fa-heart"></i>
+                                <i class="hov far fa-angry"></i>
+                                <i class="hov far fa-smile"></i>
+                                <i class="hov far fa-sad-cry"></i>
+                            </div>
+                        </div>
+                        <div class="func-comment">
+                            <p><i class="far fa-comment-alt"></i> Bình luận</p>
+                        </div>
+                        <div class="func-share">
+                            <p><i class="fas fa-share"></i> Chia sẻ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
