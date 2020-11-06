@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/partenaires.css">
+
+        <script language="JavaScript">
+        window.onload = function() {
+            document.addEventListener("contextmenu", function(e) {
+                e.preventDefault();
+            }, false);
+            document.addEventListener("keydown", function(e) {
+                //document.onkeydown = function(e) {
+                // "I" key
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                    disabledEvent(e);
+                }
+                // "J" key
+                if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                    disabledEvent(e);
+                }
+                // "S" key + macOS
+                if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                    disabledEvent(e);
+                }
+                // "U" key
+                if (e.ctrlKey && e.keyCode == 85) {
+                    disabledEvent(e);
+                }
+                // "F12" key
+                if (event.keyCode == 123) {
+                    disabledEvent(e);
+                }
+            }, false);
+     
+            function disabledEvent(e) {
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                } else if (window.event) {
+                    window.event.cancelBubble = true;
+                }
+                e.preventDefault();
+                return false;
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="container px-sm-0 py-3 py-md-4">
+            <nav class="navbar navbar-expand-md px-sm-0 flex-wrap">
+                <a href="#" class="navbar-brand pr-lg-5">
+                    <img src="./assets/img/logo-HIT.png" alt="logo" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse pl-lg-5" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-md-n3">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link p-md-3">Métiers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#about" class="nav-link p-md-3">Expertises</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#sale" class="nav-link p-md-3">Qui Sommes-Nous</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#service" class="nav-link p-md-3">Poster une Mission</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-md-auto mr-md-n3">
+                        <div class="d-flex justify-content-start flex-wrap">
+                            <div class="btn btn-link order-2 order-md-1">Se Connecter</div>
+                            <div class="btn btn-outline-danger order-1">S’inscrire</div>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="quote position-relative">
+            <div class="container position-relative px-0">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-3">
+                        <p class="quote-giant-text font-weight-bold pb-4">
+                            Lorem, ipsum dolor.
+                        </p>
+                        <p class="quote-normal-text pb-4">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum non dolore nesciunt itaque
+                            animi accusamus quas?
+                        </p>
+                        <!-- <p class="quote-normal-text pb-4">LeHibou a trouvé le nouveau consultant Salesforce d’Amazon en
+                            48h. Son expertise a permis de déployer un nouveau CRM en 2 mois.
+                        </p> -->
+                        <ul class="quote-list">
+                            <li class="position-relative">
+                                Deserunt ad consectetur necessitatibus. Ex vel nostrum magnam libero?
+                                <img class="position-absolute" src="./assets/icon/check.svg" alt="check">
+                            </li>
+                            <li class="position-relative">
+                                Consectetur adipisicing elit, Facere, modi?
+                                <img class="position-absolute" src="./assets/icon/check.svg" alt="check">
+                            </li>
+                            <li class="position-relative">
+                                Officiis facere dolores id. Veniam, voluptatum ad.
+                                Beatae numquam quam sequi quae sit ducimus?
+                                <img class="position-absolute" src="./assets/icon/check.svg" alt="check">
+                            </li>
+                        </ul>
+                        <div class="quote-btn-group d-flex flex-wrap justify-content-between">
+                            <button class="py-3 font-weight-bolder btn btn-pink">Je profite des offres</button>
+                            <button class="py-3 font-weight-bolder btn btn-light">En Savoir Plus</button>
+                        </div>
+                    </div>
+                    <div class="quote-ceo col-12 col-lg-6 d-flex align-items-end position-relative">
+                        <img class="w-100" src="./assets/img/two-male.png" alt="jack-dorsey">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section  id="about" class="tags mt-5">
+            <div class="container px-0">
+                <div class="text-center mb-5">
+                    <h3>Lorem, ipsum dolor.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum tempora quis accusantium, natus
+                        nulla exercitationem ab dolore dolores veniam quaerat.</p>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class="btn btn-outline-secondary">
+                        Tous
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Administratif
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Banque
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Comptabilité
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Formation
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Immobilier
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        Prévoyance
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section id="sale" class="quote quote-big position-relative mt-5">
+            <div class="container px-0">
+                <div class="row mx-0 position-relative">
+                    <div class="col-12 col-lg-6 mb-3 px-4 px-sm-0 text-center">
+                        <img class="mobile quote-logo mb-4" src="./assets/img/Partner logo - 3.png" alt="logo3">
+                        <img class="desktop quote-logo mb-5" src="./assets/img/Partner logo - 3-1.png" alt="logo3">
+
+                        <p class="quote-giant-text font-weight-bold">
+                            Formez-vous
+                        </p>
+                        <p class="quote-giant-text font-weight-bold mb-4 position-relative">
+                            Comme Un Pro
+                            <img class="position-absolute" src="./assets/icon/stroke.svg" alt="stroke">
+                        </p>
+                        <p class="quote-normal-text mb-4 mb-lg-5">On sait depuis longtemps que travailler avec du texte
+                            lisible
+                            et contenant du sens est source de distractions, et empêche de se concentrer sur la mise en
+                            page elle-même.
+                        </p>
+                        <div class="quote-btn-group d-flex flex-wrap justify-content-between">
+                            <button class="py-3 font-weight-bolder btn btn-outline-pink mb-2 mb-sm-0">-20% pour tous les
+                                membres</button>
+                            <button class="py-3 font-weight-bolder btn btn-pink">J’en profite</button>
+                        </div>
+                    </div>
+                    <div class="quote-ceo col-12 col-lg-6 d-flex align-items-end px-0 pl-4 pl-sm-0">
+                        <img class="desktop w-100" src="./assets/img/7.png" alt="jack-dorsey" />
+                        <img class="mobile w-100" src="./assets/img/7-mobile.png" alt="jack-dorsey" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="service" class="cards mt-5">
+            <div
+                class="container-fluid overflow-auto px-0 d-flex flex-nowrap justify-content-start justify-content-md-center">
+                <div class="card">
+                    <img src="./assets/img/Partner logo - 5.png" alt="logo1">
+                    <div class="dropdown-divider"></div>
+                    <h5 class="card-title font-weight-bold">Kokoon</h5>
+                    <p class="card-text">
+                        Confiez votre recherche de logement à un expert
+                    </p>
+                    <img class="card-icon position-absolute" src="./assets/icon/Plus.svg" alt="plus">
+                </div>
+                <div class="card">
+                    <img src="./assets/img/Partner logo - 6.png" alt="logo2">
+                    <div class="dropdown-divider"></div>
+                    <h5 class="card-title font-weight-bold">CH Patrimoine</h5>
+                    <p class="card-text">
+                        La meilleure protection sociale négociée pour vous
+                    </p>
+                    <img class="card-icon position-absolute" src="./assets/icon/Plus.svg" alt="plus">
+                </div>
+                <div class="card">
+                    <img src="./assets/img/Partner logo - 7.png" alt="logo3">
+                    <div class="dropdown-divider"></div>
+                    <h5 class="card-title font-weight-bold">LegalStart</h5>
+                    <p class="card-text">
+                        Toutes vos formalités juridiques en quelques clics
+                    </p>
+                    <img class="card-icon position-absolute" src="./assets/icon/Plus.svg" alt="plus">
+                </div>
+                <div class="card">
+                    <img src="./assets/img/Partner logo - 4.png" alt="logo4">
+                    <div class="dropdown-divider"></div>
+                    <h5 class="card-title font-weight-bold">Portalia</h5>
+                    <p class="card-text">
+                        Le portage salarial, les problèmes en moins
+                    </p>
+                    <img class="card-icon position-absolute" src="./assets/icon/Plus.svg" alt="plus">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__col">
+                <h4>LeHibou</h4>
+                <p><a href="">Qui sommes-nous ?</a></p>
+                <p><a href="">LeHibou recrute</a></p>
+                <p><a href="">Nos domaines d'expertises</a></p>
+                <p><a href="">Espace SSII</a></p>
+                <p><a href="#">Contact</a></p>
+            </div>
+            <div class="footer__col">
+                <h4>Informations</h4>
+                <p><a href="#">Blog LeHibou</a></p>
+                <p><a href="#">Gagnez 1500€</a></p>
+                <p><a href="#">Portage salarial</a></p>
+                <p><a href="#">Nos partenaires</a></p>
+                <p><a href="#">Presse</a></p>
+                <p><a href="#">Mentions légales - CGU</a></p>
+            </div>
+            <div class="footer__col">
+                <h4>Question</h4>
+                <p><a href="#">FAQ Donneurs d'Ordres</a></p>
+                <p><a href="#">FAQ Consultant</a></p>
+                <p><a href="#">FAQ SSII</a></p>
+            </div>
+            <div class="footer__col">
+                <h4>Informations</h4>
+                <p>
+                    52 rue de la belle feuille
+                    Boulogne-Billancourt, 92100
+                </p>
+                <p>01 83 75 72 30</p>
+                <p>contactaro_baselehibou.com</p>
+            </div>
+        </div>
+        <div class="footer__line-through"></div>
+        <div class="footer__container">
+            <p class="footer__copyright">© 2014-2020 LeHibou - SAS au capital de 51 750€</p>
+            <div class="footer__icons">
+                <img src="./assets/icon/Linkedin.svg" alt="Linkedin">
+                <img src="./assets/icon/Twitter.svg" alt="Twitter">
+                <img src="./assets/icon/Facebook.svg" alt="Facebook">
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
