@@ -301,6 +301,7 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-gutter: stable;
+        -webkit-overflow-scrolling: touch;
       }
 
       .aa-stats {
@@ -396,11 +397,18 @@
       @keyframes aa-dialog-in { from { opacity: 0; transform: translateY(10px) scale(0.985); } }
 
       @media (max-width: 640px) {
-        #${OVERLAY_ID} { align-items: end; padding: 0; }
-        .aa-dialog { width: 100%; max-height: 94dvh; border-radius: 20px 20px 0 0; }
-        .aa-header { grid-template-columns: 1fr; gap: 10px; padding: 18px 58px 16px 18px; }
+        #${OVERLAY_ID} { place-items: center; padding: 16px; }
+        .aa-dialog {
+          width: min(100%, 760px);
+          max-height: min(760px, 88dvh);
+          border-radius: 20px;
+        }
+        .aa-header { grid-template-columns: 1fr; gap: 8px; padding: 16px 56px 14px 16px; }
         .aa-header-meta { width: auto; }
-        .aa-close { top: 12px; right: 12px; }
+        .aa-brand-mark { width: 36px; height: 36px; border-radius: 10px; }
+        .aa-date { padding: 5px 9px; font-size: 12px; }
+        .aa-refresh { width: 34px; height: 34px; font-size: 20px; }
+        .aa-close { top: 12px; right: 12px; width: 36px; height: 36px; }
         .aa-content { padding: 16px; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
         .aa-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
         .aa-stat { padding: 12px; }
