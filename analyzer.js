@@ -1,0 +1,604 @@
+(() => {
+  "use strict";
+
+  const APP_ID = "affiliate-analyzer";
+  const STYLE_ID = `${APP_ID}-styles`;
+  const OVERLAY_ID = `${APP_ID}-overlay`;
+  const API_URL = "https://affiliate.shopee.vn/api/v3/report/list";
+  const TOOLS_URL = "https://affilyzer.com/";
+
+  if (window.affiliateAnalyzerLoaded) {
+    console.info("Affiliate Analyzer đã được tải rồi!");
+    return;
+  }
+
+  if (!window.location.hostname.includes("affiliate.shopee.vn")) {
+    window.alert("Vui lòng chạy script này trên trang Shopee Affiliate!");
+    return;
+  }
+
+  window.affiliateAnalyzerLoaded = true;
+
+  const moneyFormatter = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    maximumFractionDigits: 0,
+  });
+  const numberFormatter = new Intl.NumberFormat("vi-VN");
+
+  function formatMoney(value) {
+    return moneyFormatter.format(Number(value) || 0);
+  }
+
+  function formatNumber(value) {
+    return numberFormatter.format(Number(value) || 0);
+  }
+
+  function formatDate(value) {
+    const date = typeof value === "number" ? new Date(value * 1000) : new Date(value);
+    return new Intl.DateTimeFormat("vi-VN").format(date);
+  }
+
+  function createElement(tag, options = {}) {
+    const element = document.createElement(tag);
+
+    if (options.className) element.className = options.className;
+    if (options.text !== undefined) element.textContent = options.text;
+    if (options.id) element.id = options.id;
+    if (options.attributes) {
+      Object.entries(options.attributes).forEach(([name, value]) => {
+        element.setAttribute(name, value);
+      });
+    }
+
+    return element;
+  }
+
+  function injectStyles() {
+    if (document.getElementById(STYLE_ID)) return;
+
+    const style = createElement("style", { id: STYLE_ID });
+    style.textContent = `
+      :root {
+        --aa-blue-0: #e7f5ff;
+        --aa-blue-1: #d0ebff;
+        --aa-blue-6: #228be6;
+        --aa-blue-7: #1c7ed6;
+        --aa-teal-0: #e6fcf5;
+        --aa-teal-6: #12b886;
+        --aa-green-0: #ebfbee;
+        --aa-green-6: #40c057;
+        --aa-orange-0: #fff4e6;
+        --aa-orange-6: #fd7e14;
+        --aa-red-0: #fff5f5;
+        --aa-red-6: #fa5252;
+        --aa-grape-0: #f8f0fc;
+        --aa-grape-6: #be4bdb;
+        --aa-cyan-0: #e3fafc;
+        --aa-cyan-6: #15aabf;
+        --aa-gray-0: #f8f9fa;
+        --aa-gray-1: #f1f3f5;
+        --aa-gray-2: #e9ecef;
+        --aa-gray-5: #adb5bd;
+        --aa-gray-6: #868e96;
+        --aa-gray-7: #495057;
+        --aa-gray-9: #212529;
+      }
+
+      #${OVERLAY_ID}, #${OVERLAY_ID} * { box-sizing: border-box; }
+
+      #${OVERLAY_ID} {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483646;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(33, 37, 41, 0.62);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--aa-gray-9);
+        animation: aa-fade-in 160ms ease-out;
+      }
+
+      .aa-dialog {
+        position: relative;
+        width: min(760px, 100%);
+        max-height: min(860px, calc(100dvh - 48px));
+        overflow: auto;
+        overscroll-behavior: contain;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24);
+        animation: aa-dialog-in 200ms ease-out;
+      }
+
+      .aa-header {
+        position: relative;
+        padding: 24px 64px 22px 24px;
+        overflow: hidden;
+        color: #fff;
+        background: linear-gradient(135deg, var(--aa-blue-7), var(--aa-cyan-6));
+      }
+
+      .aa-header::after {
+        content: "";
+        position: absolute;
+        right: -42px;
+        bottom: -70px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.11);
+      }
+
+      .aa-eyebrow {
+        margin: 0 0 6px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0.82;
+      }
+
+      .aa-title {
+        margin: 0;
+        font-size: clamp(22px, 4vw, 28px);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .aa-date {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin: 12px 0 0;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .aa-close {
+        position: absolute;
+        z-index: 1;
+        top: 16px;
+        right: 16px;
+        display: grid;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.14);
+        font: inherit;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        transition: background 140ms ease, transform 140ms ease;
+      }
+
+      .aa-close:hover { background: rgba(255, 255, 255, 0.24); transform: scale(1.04); }
+      .aa-close:focus-visible, .aa-button:focus-visible, .aa-tools-link:focus-visible {
+        outline: 3px solid var(--aa-orange-6);
+        outline-offset: 2px;
+      }
+
+      .aa-content { padding: 22px 24px 24px; }
+
+      .aa-stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .aa-stat {
+        min-width: 0;
+        padding: 15px;
+        border: 1px solid var(--aa-gray-2);
+        border-radius: 14px;
+        background: var(--aa-gray-0);
+      }
+
+      .aa-stat--featured { grid-column: span 2; padding: 18px; }
+      .aa-stat--blue { border-color: var(--aa-blue-1); background: var(--aa-blue-0); }
+      .aa-stat--teal { border-color: #c3fae8; background: var(--aa-teal-0); }
+
+      .aa-stat-label {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 6px;
+        color: var(--aa-gray-7);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .aa-stat-dot { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: var(--stat-color); }
+      .aa-stat-value { overflow-wrap: anywhere; font-size: 18px; font-weight: 700; line-height: 1.25; color: var(--aa-gray-9); }
+      .aa-stat--featured .aa-stat-value { font-size: clamp(20px, 4vw, 25px); color: var(--stat-color); }
+
+      .aa-breakdown {
+        display: grid;
+        grid-template-columns: 210px minmax(0, 1fr);
+        gap: 24px;
+        align-items: center;
+        margin-top: 18px;
+        padding: 20px;
+        border: 1px solid var(--aa-gray-2);
+        border-radius: 16px;
+      }
+
+      .aa-section-title { margin: 0 0 4px; font-size: 16px; font-weight: 700; }
+      .aa-section-description { margin: 0 0 14px; color: var(--aa-gray-6); font-size: 12px; }
+      .aa-chart-wrap { display: grid; place-items: center; }
+      .aa-chart {
+        position: relative;
+        display: grid;
+        width: 150px;
+        height: 150px;
+        place-items: center;
+        border-radius: 50%;
+        background: conic-gradient(var(--aa-teal-6) 0 var(--shopee-share), var(--aa-orange-6) var(--shopee-share) 100%);
+      }
+
+      .aa-chart::before { content: ""; position: absolute; inset: 22px; border-radius: 50%; background: #fff; }
+      .aa-chart-center { position: relative; z-index: 1; text-align: center; }
+      .aa-chart-total { display: block; font-size: 11px; color: var(--aa-gray-6); }
+      .aa-chart-percent { display: block; margin-top: 2px; font-size: 22px; font-weight: 700; }
+
+      .aa-legend { display: grid; gap: 10px; }
+      .aa-legend-item { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 9px; align-items: center; }
+      .aa-legend-color { width: 10px; height: 10px; border-radius: 50%; background: var(--legend-color); }
+      .aa-legend-label { color: var(--aa-gray-7); font-size: 13px; }
+      .aa-legend-value { font-size: 13px; font-weight: 700; text-align: right; }
+
+      .aa-actions { display: flex; gap: 10px; margin-top: 18px; }
+      .aa-button, .aa-tools-link {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+      }
+
+      .aa-button { flex: 1; border: 1px solid var(--aa-blue-6); color: #fff; background: var(--aa-blue-6); }
+      .aa-button:hover { background: var(--aa-blue-7); transform: translateY(-1px); }
+      .aa-tools-link { border: 1px solid var(--aa-gray-2); color: var(--aa-gray-7); background: #fff; }
+      .aa-tools-link:hover { border-color: var(--aa-gray-5); background: var(--aa-gray-0); }
+
+      .aa-notification {
+        position: fixed;
+        z-index: 2147483647;
+        top: max(16px, env(safe-area-inset-top));
+        left: 50%;
+        width: min(calc(100% - 32px), 440px);
+        padding: 12px 16px;
+        border-radius: 10px;
+        color: #fff;
+        background: var(--aa-blue-6);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        font: 600 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        text-align: center;
+        transform: translateX(-50%);
+        transition: opacity 200ms ease, transform 200ms ease;
+      }
+      .aa-notification--warning { color: var(--aa-gray-9); background: #fcc419; }
+      .aa-notification--error { background: var(--aa-red-6); }
+      .aa-notification--hide { opacity: 0; transform: translate(-50%, -8px); }
+
+      @keyframes aa-fade-in { from { opacity: 0; } }
+      @keyframes aa-dialog-in { from { opacity: 0; transform: translateY(10px) scale(0.985); } }
+
+      @media (max-width: 640px) {
+        #${OVERLAY_ID} { align-items: end; padding: 0; }
+        .aa-dialog { width: 100%; max-height: 94dvh; border-radius: 20px 20px 0 0; border-bottom: 0; }
+        .aa-header { padding: 20px 58px 18px 18px; }
+        .aa-close { top: 12px; right: 12px; }
+        .aa-content { padding: 16px; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
+        .aa-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+        .aa-stat { padding: 12px; }
+        .aa-stat--featured { padding: 14px; }
+        .aa-stat-value { font-size: 16px; }
+        .aa-breakdown { grid-template-columns: 120px minmax(0, 1fr); gap: 14px; padding: 15px 12px; }
+        .aa-chart { width: 112px; height: 112px; }
+        .aa-chart::before { inset: 17px; }
+        .aa-chart-percent { font-size: 18px; }
+        .aa-legend-item { grid-template-columns: 9px minmax(0, 1fr); gap: 7px; }
+        .aa-legend-value { grid-column: 2; text-align: left; }
+        .aa-actions { flex-direction: column; }
+        .aa-button, .aa-tools-link { width: 100%; }
+      }
+
+      @media (max-width: 360px) {
+        .aa-breakdown { grid-template-columns: 1fr; }
+        .aa-chart { width: 126px; height: 126px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #${OVERLAY_ID}, .aa-dialog { animation: none; }
+        .aa-close, .aa-button, .aa-tools-link, .aa-notification { transition: none; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function showNotification(message, type = "info") {
+    injectStyles();
+    const notification = createElement("div", {
+      className: `aa-notification${type === "info" ? "" : ` aa-notification--${type}`}`,
+      text: message,
+      attributes: { role: type === "error" ? "alert" : "status" },
+    });
+
+    document.body.appendChild(notification);
+    window.setTimeout(() => {
+      notification.classList.add("aa-notification--hide");
+      window.setTimeout(() => notification.remove(), 220);
+    }, 3000);
+  }
+
+  function createStatCard(label, value, color, options = {}) {
+    const card = createElement("div", {
+      className: `aa-stat${options.featured ? " aa-stat--featured" : ""}${options.variant ? ` aa-stat--${options.variant}` : ""}`,
+    });
+    card.style.setProperty("--stat-color", color);
+
+    const labelElement = createElement("div", { className: "aa-stat-label" });
+    labelElement.append(
+      createElement("span", { className: "aa-stat-dot", attributes: { "aria-hidden": "true" } }),
+      createElement("span", { text: label }),
+    );
+    card.append(labelElement, createElement("div", { className: "aa-stat-value", text: value }));
+    return card;
+  }
+
+  function createLegendItem(label, value, color) {
+    const item = createElement("div", { className: "aa-legend-item" });
+    item.append(
+      createElement("span", { className: "aa-legend-color", attributes: { "aria-hidden": "true" } }),
+      createElement("span", { className: "aa-legend-label", text: label }),
+      createElement("span", { className: "aa-legend-value", text: formatMoney(value) }),
+    );
+    item.style.setProperty("--legend-color", color);
+    return item;
+  }
+
+  function showResults(data) {
+    document.getElementById(OVERLAY_ID)?.remove();
+    injectStyles();
+
+    const overlay = createElement("div", { id: OVERLAY_ID });
+    const dialog = createElement("section", {
+      className: "aa-dialog",
+      attributes: {
+        role: "dialog",
+        "aria-modal": "true",
+        "aria-labelledby": "aa-title",
+        tabindex: "-1",
+      },
+    });
+    const header = createElement("header", { className: "aa-header" });
+    const closeButton = createElement("button", {
+      className: "aa-close",
+      text: "×",
+      attributes: { type: "button", "aria-label": "Đóng cửa sổ" },
+    });
+    const closeDialog = () => {
+      document.removeEventListener("keydown", handleKeydown);
+      overlay.remove();
+    };
+    const handleKeydown = (event) => {
+      if (event.key === "Escape") closeDialog();
+    };
+
+    closeButton.addEventListener("click", closeDialog);
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeDialog();
+    });
+    document.addEventListener("keydown", handleKeydown);
+
+    header.append(
+      closeButton,
+      createElement("p", { className: "aa-eyebrow", text: "Báo cáo hiệu suất" }),
+      createElement("h2", { id: "aa-title", className: "aa-title", text: "Affiliate Analyzer" }),
+      createElement("p", {
+        className: "aa-date",
+        text: `📅 ${formatDate(data.startDate)} – ${formatDate(data.endDate)}`,
+      }),
+    );
+
+    const content = createElement("div", { className: "aa-content" });
+    const stats = createElement("div", { className: "aa-stats" });
+    stats.append(
+      createStatCard("Tổng GMV", formatMoney(data.totalGmv), "#228be6", { featured: true, variant: "blue" }),
+      createStatCard("Tổng hoa hồng", formatMoney(data.totalCommission), "#12b886", { featured: true, variant: "teal" }),
+      createStatCard("Tổng đơn hàng", formatNumber(data.totalOrders), "#7950f2"),
+      createStatCard("Giá trị TB/đơn", formatMoney(data.avgOrderValue), "#fd7e14"),
+      createStatCard("Đơn video", formatNumber(data.videoOrders), "#be4bdb"),
+      createStatCard("Đơn live", formatNumber(data.liveOrders), "#15aabf"),
+      createStatCard("Đơn social", formatNumber(data.socialOrders), "#40c057"),
+      createStatCard("Đơn hủy", formatNumber(data.cancelledOrders), "#fa5252"),
+    );
+
+    const totalCommission = data.shopeeCommission + data.xtraCommission;
+    const hasCommission = totalCommission > 0;
+    const shopeePercent = hasCommission ? (data.shopeeCommission / totalCommission) * 100 : 0;
+    const xtraPercent = hasCommission ? 100 - shopeePercent : 0;
+    const breakdown = createElement("section", { className: "aa-breakdown" });
+    const chartWrap = createElement("div", { className: "aa-chart-wrap" });
+    const chart = createElement("div", {
+      className: "aa-chart",
+      attributes: {
+        role: "img",
+        "aria-label": hasCommission
+          ? `Hoa hồng Shopee ${shopeePercent.toFixed(1)}%, Xtra ${xtraPercent.toFixed(1)}%`
+          : "Không có dữ liệu hoa hồng",
+      },
+    });
+    chart.style.setProperty("--shopee-share", `${shopeePercent}%`);
+    if (!hasCommission) chart.style.background = "var(--aa-gray-2)";
+    const chartCenter = createElement("div", { className: "aa-chart-center" });
+    chartCenter.append(
+      createElement("span", { className: "aa-chart-total", text: "Shopee" }),
+      createElement("strong", { className: "aa-chart-percent", text: `${Math.round(shopeePercent)}%` }),
+    );
+    chart.appendChild(chartCenter);
+    chartWrap.appendChild(chart);
+
+    const breakdownInfo = createElement("div");
+    breakdownInfo.append(
+      createElement("h3", { className: "aa-section-title", text: "Phân bổ hoa hồng" }),
+      createElement("p", { className: "aa-section-description", text: "Tỷ trọng theo nguồn hoa hồng" }),
+    );
+    const legend = createElement("div", { className: "aa-legend" });
+    legend.append(
+      createLegendItem("Shopee", data.shopeeCommission, "#12b886"),
+      createLegendItem("Xtra", data.xtraCommission, "#fd7e14"),
+    );
+    breakdownInfo.appendChild(legend);
+    breakdown.append(chartWrap, breakdownInfo);
+
+    const actions = createElement("div", { className: "aa-actions" });
+    const refreshButton = createElement("button", {
+      className: "aa-button",
+      text: "↻ Làm mới dữ liệu",
+      attributes: { type: "button" },
+    });
+    refreshButton.addEventListener("click", () => {
+      closeDialog();
+      loadData();
+    });
+    const toolsLink = createElement("a", {
+      className: "aa-tools-link",
+      text: "Xem thêm công cụ ↗",
+      attributes: { href: TOOLS_URL, target: "_blank", rel: "noopener noreferrer" },
+    });
+    actions.append(refreshButton, toolsLink);
+
+    content.append(stats, breakdown, actions);
+    dialog.append(header, content);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+    dialog.focus();
+  }
+
+  function parseReferrer(order) {
+    if (typeof order.referrer === "string") {
+      try {
+        return JSON.parse(order.referrer);
+      } catch {
+        return {};
+      }
+    }
+    return order.referrer || {};
+  }
+
+  function analyzeReports(reports, startDate, endDate) {
+    const result = {
+      startDate,
+      endDate,
+      totalGmv: 0,
+      totalCommission: 0,
+      shopeeCommission: 0,
+      xtraCommission: 0,
+      totalOrders: 0,
+      videoOrders: 0,
+      liveOrders: 0,
+      socialOrders: 0,
+      cancelledOrders: 0,
+    };
+
+    reports.forEach((report) => {
+      const referrer = parseReferrer(report);
+      const source = report.internal_source || referrer.internal_source || "";
+
+      if (source.includes("Shopeevideo-Shopee")) result.videoOrders += 1;
+      else if (source.includes("Shopeelive-Shopee")) result.liveOrders += 1;
+      else result.socialOrders += 1;
+
+      if (!Array.isArray(report.orders)) return;
+      report.orders.forEach((order) => {
+        if (order.order_status === "CANCEL") result.cancelledOrders += 1;
+        if (!Array.isArray(order.items) || order.items.length === 0) return;
+
+        result.totalOrders += 1;
+        order.items.forEach((item) => {
+          const gmv = (item.actual_amount ?? 0) / 100000;
+          const shopeeCommission = (item.item_commission ?? 0) / 100000;
+          const xtraCommission = (item.capped_brand_commission ?? 0) / 100000;
+
+          result.totalGmv += gmv;
+          result.shopeeCommission += shopeeCommission;
+          result.xtraCommission += xtraCommission;
+          result.totalCommission += shopeeCommission + xtraCommission;
+        });
+      });
+    });
+
+    result.avgOrderValue = result.totalOrders > 0 ? result.totalGmv / result.totalOrders : 0;
+    return result;
+  }
+
+  function getYesterdayRange() {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    return {
+      startDate: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate()),
+      endDate: new Date(yesterday.getFullYear(), yesterday.getMonth(), yesterday.getDate(), 23, 59, 59),
+    };
+  }
+
+  async function loadData() {
+    const { startDate, endDate } = getYesterdayRange();
+    const query = new URLSearchParams({
+      page_size: "500",
+      page_num: "1",
+      purchase_time_s: String(Math.floor(startDate.getTime() / 1000)),
+      purchase_time_e: String(Math.floor(endDate.getTime() / 1000)),
+      version: "1",
+    });
+
+    showNotification("Đang tải dữ liệu từ Shopee...");
+
+    try {
+      const response = await fetch(`${API_URL}?${query}`, {
+        method: "GET",
+        credentials: "same-origin",
+      });
+
+      if (!response.ok) {
+        throw new Error("Không thể tải dữ liệu. Vui lòng kiểm tra đăng nhập và thử lại.");
+      }
+
+      const payload = await response.json();
+      const reports = payload?.data?.list;
+      if (!Array.isArray(reports) || reports.length === 0) {
+        showNotification("Không có dữ liệu cho ngày hôm qua!", "warning");
+        return;
+      }
+
+      showResults(analyzeReports(reports, startDate, endDate));
+    } catch (error) {
+      console.error("Affiliate Analyzer:", error);
+      showNotification(error.message || "Đã có lỗi xảy ra.", "error");
+    }
+  }
+
+  injectStyles();
+  loadData();
+})();
