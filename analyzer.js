@@ -134,54 +134,82 @@
       .aa-brand {
         position: relative;
         z-index: 1;
-        display: inline-flex;
+        display: flex;
+        width: fit-content;
         align-items: center;
-        gap: 8px;
-        margin: 0 0 5px;
+        gap: 10px;
+        margin: 0;
       }
 
       .aa-brand-mark {
         display: grid;
-        width: 26px;
-        height: 26px;
+        width: 38px;
+        height: 38px;
+        flex: 0 0 auto;
         place-items: center;
-        border-radius: 8px;
+        border-radius: 11px;
         color: var(--aa-blue-7);
         background: #fff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-        font-size: 14px;
+        font-size: 18px;
         font-weight: 800;
       }
 
+      .aa-brand-copy { display: grid; gap: 2px; min-width: 0; }
       .aa-brand-name {
         font-size: 14px;
         font-weight: 700;
+        line-height: 1.2;
         letter-spacing: -0.01em;
       }
 
       .aa-title {
-        position: relative;
-        z-index: 1;
         margin: 0;
         color: #fff;
-        font-size: clamp(17px, 3vw, 20px);
-        font-weight: 600;
-        line-height: 1.3;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.25;
+        opacity: 0.82;
+      }
+
+      .aa-header-meta {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 13px;
       }
 
       .aa-date {
-        position: relative;
-        z-index: 1;
         display: inline-flex;
         align-items: center;
         gap: 7px;
-        margin: 12px 0 0;
+        margin: 0;
         padding: 6px 10px;
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.16);
         font-size: 13px;
         font-weight: 600;
       }
+
+      .aa-refresh {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        margin-left: auto;
+        padding: 0;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.14);
+        font: 700 22px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        cursor: pointer;
+        transition: background 140ms ease, transform 140ms ease;
+      }
+
+      .aa-refresh:hover { background: rgba(255, 255, 255, 0.24); transform: rotate(35deg); }
 
       .aa-app-promo {
         position: relative;
@@ -252,7 +280,7 @@
       }
 
       .aa-close:hover { background: rgba(255, 255, 255, 0.24); transform: scale(1.04); }
-      .aa-close:focus-visible, .aa-button:focus-visible, .aa-tools-link:focus-visible, .aa-app-promo:focus-visible {
+      .aa-close:focus-visible, .aa-refresh:focus-visible, .aa-button:focus-visible, .aa-tools-link:focus-visible, .aa-app-promo:focus-visible {
         outline: 3px solid var(--aa-orange-6);
         outline-offset: 2px;
       }
@@ -345,7 +373,7 @@
 
       .aa-button { flex: 1; border: 1px solid var(--aa-blue-6); color: #fff; background: var(--aa-blue-6); }
       .aa-button:hover { background: var(--aa-blue-7); transform: translateY(-1px); }
-      .aa-tools-link { border: 1px solid var(--aa-gray-2); color: var(--aa-gray-7); background: #fff; }
+      .aa-tools-link { flex: 1; border: 1px solid var(--aa-gray-2); color: var(--aa-gray-7); background: #fff; }
       .aa-tools-link:hover { border-color: var(--aa-gray-5); background: var(--aa-gray-0); }
 
       @keyframes aa-fade-in { from { opacity: 0; } }
@@ -379,7 +407,7 @@
 
       @media (prefers-reduced-motion: reduce) {
         #${OVERLAY_ID}, .aa-dialog { animation: none; }
-        .aa-close, .aa-button, .aa-tools-link, .aa-app-promo { transition: none; }
+        .aa-close, .aa-refresh, .aa-button, .aa-tools-link, .aa-app-promo { transition: none; }
       }
     `;
     if (!existingStyle) document.head.appendChild(style);
@@ -457,19 +485,37 @@
     });
     document.addEventListener("keydown", handleKeydown);
 
+    const refreshButton = createElement("button", {
+      className: "aa-refresh",
+      text: "↻",
+      attributes: { type: "button", "aria-label": "Làm mới dữ liệu" },
+    });
+    refreshButton.addEventListener("click", () => {
+      closeDialog();
+      loadData();
+    });
     const brand = createElement("div", { className: "aa-brand", attributes: { "aria-label": "Affilyzer.com" } });
+    const brandCopy = createElement("div", { className: "aa-brand-copy" });
+    brandCopy.append(
+      createElement("span", { className: "aa-brand-name", text: "Affilyzer.com" }),
+      createElement("h2", { id: "aa-title", className: "aa-title", text: "Thống kê Affiliate Shopee" }),
+    );
     brand.append(
       createElement("span", { className: "aa-brand-mark", text: "A", attributes: { "aria-hidden": "true" } }),
-      createElement("span", { className: "aa-brand-name", text: "Affilyzer.com" }),
+      brandCopy,
     );
-    header.append(
-      closeButton,
-      brand,
-      createElement("h2", { id: "aa-title", className: "aa-title", text: "Thống kê Affiliate Shopee" }),
+    const headerMeta = createElement("div", { className: "aa-header-meta" });
+    headerMeta.append(
       createElement("p", {
         className: "aa-date",
         text: `📅 Ngày hôm qua · ${formatDate(data.startDate)}`,
       }),
+      refreshButton,
+    );
+    header.append(
+      closeButton,
+      brand,
+      headerMeta,
     );
     if (SHOW_HOAN_XU_PROMO) {
       const appPromo = createElement("a", {
@@ -556,21 +602,12 @@
     breakdown.append(chartWrap, breakdownInfo);
 
     const actions = createElement("div", { className: "aa-actions" });
-    const refreshButton = createElement("button", {
-      className: "aa-button",
-      text: "↻ Làm mới dữ liệu",
-      attributes: { type: "button" },
-    });
-    refreshButton.addEventListener("click", () => {
-      closeDialog();
-      loadData();
-    });
     const toolsLink = createElement("a", {
       className: "aa-tools-link",
       text: "Xem thêm công cụ ↗",
       attributes: { href: TOOLS_URL, target: "_blank", rel: "noopener noreferrer" },
     });
-    actions.append(refreshButton, toolsLink);
+    actions.appendChild(toolsLink);
 
     content.append(stats, breakdown, actions);
     dialog.append(header, content);
