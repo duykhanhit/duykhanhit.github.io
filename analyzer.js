@@ -8,6 +8,7 @@
   const TOOLS_URL = "https://affilyzer.com/";
   const HOAN_XU_URL = "https://hoanxu.vn/download";
   const HOAN_XU_LOGO_URL = "https://hoanxu.vn/logo.png";
+  const SHOW_HOAN_XU_PROMO = false;
 
   if (!window.location.hostname.includes("affiliate.shopee.vn")) {
     window.alert("Vui lòng chạy script này trên trang Shopee Affiliate!");
@@ -136,7 +137,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin: 0 0 10px;
+        margin: 0 0 5px;
       }
 
       .aa-brand-mark {
@@ -162,9 +163,10 @@
         position: relative;
         z-index: 1;
         margin: 0;
-        font-size: clamp(22px, 4vw, 28px);
-        font-weight: 700;
-        line-height: 1.2;
+        color: #fff;
+        font-size: clamp(17px, 3vw, 20px);
+        font-weight: 600;
+        line-height: 1.3;
       }
 
       .aa-date {
@@ -460,35 +462,6 @@
       createElement("span", { className: "aa-brand-mark", text: "A", attributes: { "aria-hidden": "true" } }),
       createElement("span", { className: "aa-brand-name", text: "Affilyzer.com" }),
     );
-    const appPromo = createElement("a", {
-      className: "aa-app-promo",
-      attributes: {
-        href: HOAN_XU_URL,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        "aria-label": "Tải ứng dụng Hoàn Xu - Mua Sắm & Hoàn Tiền",
-      },
-    });
-    const appCopy = createElement("span", { className: "aa-app-copy" });
-    appCopy.append(
-      createElement("strong", { className: "aa-app-name", text: "Hoàn Xu" }),
-      createElement("span", { className: "aa-app-tagline", text: "Mua Sắm & Hoàn Tiền" }),
-    );
-    appPromo.append(
-      createElement("img", {
-        className: "aa-app-icon",
-        attributes: {
-          src: HOAN_XU_LOGO_URL,
-          alt: "",
-          width: "40",
-          height: "40",
-          loading: "eager",
-          referrerpolicy: "no-referrer",
-        },
-      }),
-      appCopy,
-      createElement("span", { className: "aa-app-cta", text: "Tải app →" }),
-    );
     header.append(
       closeButton,
       brand,
@@ -497,8 +470,39 @@
         className: "aa-date",
         text: `📅 Ngày hôm qua · ${formatDate(data.startDate)}`,
       }),
-      appPromo,
     );
+    if (SHOW_HOAN_XU_PROMO) {
+      const appPromo = createElement("a", {
+        className: "aa-app-promo",
+        attributes: {
+          href: HOAN_XU_URL,
+          target: "_blank",
+          rel: "noopener noreferrer",
+          "aria-label": "Tải ứng dụng Hoàn Xu - Mua Sắm & Hoàn Tiền",
+        },
+      });
+      const appCopy = createElement("span", { className: "aa-app-copy" });
+      appCopy.append(
+        createElement("strong", { className: "aa-app-name", text: "Hoàn Xu" }),
+        createElement("span", { className: "aa-app-tagline", text: "Mua Sắm & Hoàn Tiền" }),
+      );
+      appPromo.append(
+        createElement("img", {
+          className: "aa-app-icon",
+          attributes: {
+            src: HOAN_XU_LOGO_URL,
+            alt: "",
+            width: "40",
+            height: "40",
+            loading: "eager",
+            referrerpolicy: "no-referrer",
+          },
+        }),
+        appCopy,
+        createElement("span", { className: "aa-app-cta", text: "Tải app →" }),
+      );
+      header.appendChild(appPromo);
+    }
 
     const content = createElement("div", { className: "aa-content" });
     const stats = createElement("div", { className: "aa-stats" });
