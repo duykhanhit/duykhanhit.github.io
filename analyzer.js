@@ -176,6 +176,7 @@
         position: relative;
         z-index: 1;
         display: flex;
+        width: calc(100% + 48px);
         align-items: center;
         gap: 10px;
         margin-top: 13px;
@@ -383,6 +384,7 @@
         #${OVERLAY_ID} { align-items: end; padding: 0; }
         .aa-dialog { width: 100%; max-height: 94dvh; border-radius: 20px 20px 0 0; }
         .aa-header { padding: 20px 58px 18px 18px; }
+        .aa-header-meta { width: calc(100% + 46px); }
         .aa-close { top: 12px; right: 12px; }
         .aa-content { padding: 16px; padding-bottom: max(18px, env(safe-area-inset-bottom)); }
         .aa-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
