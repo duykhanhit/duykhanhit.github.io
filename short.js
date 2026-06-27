@@ -5,7 +5,6 @@
   const STYLE_ID = `${APP_ID}-styles`;
   const OVERLAY_ID = `${APP_ID}-overlay`;
   const API_URL = "https://affiliate.shopee.vn/api/v3/gql?q=batchCustomLink";
-  const TOOLS_URL = "https://affilyzer.com/";
   const MAX_LINKS_PER_REQUEST = 5;
 
   const BATCH_CUSTOM_LINK_QUERY = `
@@ -152,16 +151,6 @@
         opacity: 0.82;
       }
 
-      #${OVERLAY_ID} .alc-description {
-        position: relative;
-        z-index: 1;
-        max-width: 520px;
-        margin: 15px 0 0;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 13px;
-        line-height: 1.55;
-      }
-
       #${OVERLAY_ID} .alc-close {
         position: absolute;
         z-index: 2;
@@ -253,13 +242,6 @@
         opacity: 0.8;
       }
 
-      #${OVERLAY_ID} .alc-hint {
-        margin: 8px 0 0;
-        color: var(--alc-gray-6);
-        font-size: 12px;
-        line-height: 1.5;
-      }
-
       #${OVERLAY_ID} .alc-options {
         margin-top: 16px;
         border: 1px solid var(--alc-gray-2);
@@ -279,13 +261,6 @@
       #${OVERLAY_ID} .alc-options[open] .alc-options-summary { border-bottom: 1px solid var(--alc-gray-2); }
 
       #${OVERLAY_ID} .alc-options-content { padding: 14px; }
-
-      #${OVERLAY_ID} .alc-options-description {
-        margin: 0 0 12px;
-        color: var(--alc-gray-6);
-        font-size: 12px;
-        line-height: 1.5;
-      }
 
       #${OVERLAY_ID} .alc-subids {
         display: grid;
@@ -348,8 +323,8 @@
       }
 
       #${OVERLAY_ID} .alc-actions {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: center;
         gap: 10px;
         margin-top: 18px;
@@ -366,7 +341,7 @@
       }
 
       #${OVERLAY_ID} .alc-button:hover:not(:disabled) { transform: translateY(-1px); }
-      #${OVERLAY_ID} .alc-button:disabled { cursor: wait; opacity: 0.65; }
+      #${OVERLAY_ID} .alc-button:disabled { cursor: not-allowed; opacity: 0.65; }
       #${OVERLAY_ID} .alc-button--primary { color: #fff; background: var(--alc-blue-7); }
       #${OVERLAY_ID} .alc-button--primary:hover:not(:disabled) { background: #1864ab; }
       #${OVERLAY_ID} .alc-button--secondary {
@@ -375,16 +350,6 @@
         background: #fff;
       }
       #${OVERLAY_ID} .alc-button--secondary:hover:not(:disabled) { background: var(--alc-gray-0); }
-
-      #${OVERLAY_ID} .alc-tools-link {
-        margin-left: auto;
-        color: var(--alc-blue-7);
-        font-size: 13px;
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      #${OVERLAY_ID} .alc-tools-link:hover { text-decoration: underline; }
 
       @keyframes alc-fade-in { from { opacity: 0; } to { opacity: 1; } }
       @keyframes alc-dialog-in {
@@ -399,8 +364,6 @@
         #${OVERLAY_ID} .alc-content { padding: 18px; }
         #${OVERLAY_ID} .alc-textarea { min-height: 220px; }
         #${OVERLAY_ID} .alc-subids { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        #${OVERLAY_ID} .alc-button--primary { flex: 1 1 100%; }
-        #${OVERLAY_ID} .alc-tools-link { width: 100%; margin: 6px 0 0; }
       }
     `;
 
@@ -511,14 +474,7 @@
       createElement("span", { className: "alc-brand-mark", text: "A", attributes: { "aria-hidden": "true" } }),
       brandCopy,
     );
-    header.append(
-      closeButton,
-      brand,
-      createElement("p", {
-        className: "alc-description",
-        text: "Dán nội dung của bạn vào bên dưới. Công cụ sẽ tự tìm và chuyển đổi các link Shopee, phần chữ còn lại vẫn được giữ nguyên.",
-      }),
-    );
+    header.append(closeButton, brand);
 
     const content = createElement("div", { className: "alc-content" });
     const labelRow = createElement("div", { className: "alc-label-row" });
@@ -535,12 +491,12 @@
     const quickActions = createElement("div", { className: "alc-quick-actions" });
     const pasteButton = createElement("button", {
       className: "alc-quick-button",
-      text: "📋 Dán nội dung",
+      text: "📋 Dán",
       attributes: { type: "button" },
     });
     const clearButton = createElement("button", {
       className: "alc-quick-button",
-      text: "✕ Xóa nội dung",
+      text: "✕ Xóa",
       attributes: { type: "button" },
     });
     quickActions.append(pasteButton, clearButton);
@@ -552,10 +508,6 @@
         placeholder: "Dán đoạn văn có chứa link, ví dụ:\nhttps://s.shopee.vn/5VTI0LLwQa",
         spellcheck: "false",
       },
-    });
-    const hint = createElement("p", {
-      className: "alc-hint",
-      text: "Bạn có thể dán cả bài viết có nhiều link. Link giống nhau sẽ được xử lý một lần để tiết kiệm thời gian.",
     });
     const options = createElement("details", { className: "alc-options" });
     const optionsSummary = createElement("summary", {
@@ -569,26 +521,20 @@
         className: "alc-subid-input",
         attributes: {
           type: "text",
-          placeholder: `Mã ${index + 1}`,
+          placeholder: `Sub_id${index + 1}`,
           autocomplete: "off",
-          "aria-label": `Mã theo dõi ${index + 1}`,
+          "aria-label": `Sub_id${index + 1}`,
         },
       });
       const label = createElement("label", {
         className: "alc-subid-label",
-        text: `Mã ${index + 1}`,
+        text: `Sub_id${index + 1}`,
       });
       label.appendChild(input);
       subIds.appendChild(label);
       return input;
     });
-    optionsContent.append(
-      createElement("p", {
-        className: "alc-options-description",
-        text: "Dùng các mã này nếu bạn muốn phân biệt nguồn chia sẻ. Có thể nhập từ 1 đến 5 mã hoặc bỏ trống tất cả.",
-      }),
-      subIds,
-    );
+    optionsContent.appendChild(subIds);
     options.append(optionsSummary, optionsContent);
     const status = createElement("div", {
       className: "alc-status",
@@ -603,15 +549,10 @@
     const copyButton = createElement("button", {
       className: "alc-button alc-button--secondary",
       text: "Sao chép kết quả",
-      attributes: { type: "button" },
+      attributes: { type: "button", disabled: "" },
     });
-    const toolsLink = createElement("a", {
-      className: "alc-tools-link",
-      text: "Xem thêm công cụ ↗",
-      attributes: { href: TOOLS_URL, target: "_blank", rel: "noopener noreferrer" },
-    });
-    actions.append(convertButton, copyButton, toolsLink);
-    content.append(labelRow, quickActions, textarea, hint, options, status, actions);
+    actions.append(convertButton, copyButton);
+    content.append(labelRow, quickActions, textarea, options, status, actions);
     dialog.append(header, content);
     overlay.appendChild(dialog);
 
@@ -623,6 +564,10 @@
       status.textContent = "";
       status.className = "alc-status";
     };
+    let hasConvertedResult = false;
+    const updateCopyButton = () => {
+      copyButton.disabled = textarea.disabled || !hasConvertedResult;
+    };
     const updateCounter = () => {
       const count = extractShopeeUrls(textarea.value).length;
       counter.textContent = `${count} link`;
@@ -630,13 +575,13 @@
     const setLoading = (loading) => {
       textarea.disabled = loading;
       convertButton.disabled = loading;
-      copyButton.disabled = loading;
       pasteButton.disabled = loading;
       clearButton.disabled = loading;
       subIdInputs.forEach((input) => {
         input.disabled = loading;
       });
       convertButton.textContent = loading ? "Đang chuyển đổi…" : "Chuyển đổi link";
+      updateCopyButton();
     };
     const closeDialog = () => {
       document.removeEventListener("keydown", handleKeydown);
@@ -657,6 +602,8 @@
     });
     document.addEventListener("keydown", handleKeydown);
     textarea.addEventListener("input", () => {
+      hasConvertedResult = false;
+      updateCopyButton();
       updateCounter();
       clearStatus();
     });
@@ -669,6 +616,8 @@
           return;
         }
         textarea.value = clipboardText;
+        hasConvertedResult = false;
+        updateCopyButton();
         updateCounter();
         clearStatus();
         textarea.focus();
@@ -680,6 +629,8 @@
 
     clearButton.addEventListener("click", () => {
       textarea.value = "";
+      hasConvertedResult = false;
+      updateCopyButton();
       updateCounter();
       clearStatus();
       textarea.focus();
@@ -700,6 +651,7 @@
       );
       const replacements = new Map();
       let failedCount = 0;
+      hasConvertedResult = false;
       setLoading(true);
 
       try {
@@ -722,6 +674,7 @@
         updateCounter();
 
         const successCount = replacements.size;
+        hasConvertedResult = successCount > 0;
         if (failedCount > 0) {
           setStatus(
             `Đã chuyển đổi ${successCount}/${urls.length} link. ${failedCount} link lỗi được giữ nguyên.`,
