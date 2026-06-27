@@ -5,12 +5,7 @@
   const STYLE_ID = `${APP_ID}-styles`;
   const OVERLAY_ID = `${APP_ID}-overlay`;
   const API_URL = "https://affiliate.shopee.vn/api/v3/report/list";
-  const TOOLS_URL = "https://affilyzer.com/";
-
-  if (window.affiliateAnalyzerLoaded) {
-    console.info("Affiliate Analyzer đã được tải rồi!");
-    return;
-  }
+  const TOOLS_URL = "https://addlivetag.com/";
 
   if (!window.location.hostname.includes("affiliate.shopee.vn")) {
     window.alert("Vui lòng chạy script này trên trang Shopee Affiliate!");
@@ -190,6 +185,30 @@
       }
 
       .aa-content { padding: 22px 24px 24px; }
+
+      .aa-status {
+        margin-bottom: 14px;
+        padding: 11px 13px;
+        border: 1px solid var(--aa-blue-1);
+        border-radius: 10px;
+        color: var(--aa-blue-7);
+        background: var(--aa-blue-0);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .aa-status--warning {
+        border-color: #ffec99;
+        color: #e67700;
+        background: #fff9db;
+      }
+
+      .aa-status--error {
+        border-color: #ffc9c9;
+        color: #e03131;
+        background: var(--aa-red-0);
+      }
 
       .aa-stats {
         display: grid;
@@ -378,7 +397,12 @@
   }
 
   function showResults(data) {
-    document.getElementById(OVERLAY_ID)?.remove();
+    const existingOverlay = document.getElementById(OVERLAY_ID);
+    if (typeof existingOverlay?.closeAffiliateAnalyzer === "function") {
+      existingOverlay.closeAffiliateAnalyzer();
+    } else {
+      existingOverlay?.remove();
+    }
     injectStyles();
 
     const overlay = createElement("div", { id: OVERLAY_ID });
@@ -404,6 +428,7 @@
     const handleKeydown = (event) => {
       if (event.key === "Escape") closeDialog();
     };
+    overlay.closeAffiliateAnalyzer = closeDialog;
 
     closeButton.addEventListener("click", closeDialog);
     overlay.addEventListener("click", (event) => {
@@ -422,6 +447,15 @@
     );
 
     const content = createElement("div", { className: "aa-content" });
+    if (data.notice) {
+      content.appendChild(
+        createElement("div", {
+          className: `aa-status${data.noticeType ? ` aa-status--${data.noticeType}` : ""}`,
+          text: data.notice,
+          attributes: { role: data.noticeType === "error" ? "alert" : "status" },
+        }),
+      );
+    }
     const stats = createElement("div", { className: "aa-stats" });
     stats.append(
       createStatCard("Tổng GMV", formatMoney(data.totalGmv), "#228be6", { featured: true, variant: "blue" }),
@@ -565,6 +599,7 @@
 
   async function loadData() {
     const { startDate, endDate } = getYesterdayRange();
+    const emptyResult = analyzeReports([], startDate, endDate);
     const query = new URLSearchParams({
       page_size: "500",
       page_num: "1",
@@ -573,7 +608,10 @@
       version: "1",
     });
 
-    showNotification("Đang tải dữ liệu từ Shopee...");
+    showResults({
+      ...emptyResult,
+      notice: "Đang tải dữ liệu từ Shopee...",
+    });
 
     try {
       const response = await fetch(`${API_URL}?${query}`, {
@@ -588,14 +626,22 @@
       const payload = await response.json();
       const reports = payload?.data?.list;
       if (!Array.isArray(reports) || reports.length === 0) {
-        showNotification("Không có dữ liệu cho ngày hôm qua!", "warning");
+        showResults({
+          ...emptyResult,
+          notice: "Không có dữ liệu cho ngày hôm qua. Các chỉ số được hiển thị là 0.",
+          noticeType: "warning",
+        });
         return;
       }
 
       showResults(analyzeReports(reports, startDate, endDate));
     } catch (error) {
       console.error("Affiliate Analyzer:", error);
-      showNotification(error.message || "Đã có lỗi xảy ra.", "error");
+      showResults({
+        ...emptyResult,
+        notice: error.message || "Không thể tải dữ liệu. Các chỉ số tạm thời được hiển thị là 0.",
+        noticeType: "error",
+      });
     }
   }
 
